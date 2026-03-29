@@ -1160,15 +1160,34 @@
     async function generateFortuneAndMarket() {
       const name = document.getElementById("name").value.trim();
       const birthDate = document.getElementById("birthDate").value;
-      if (!name || !birthDate) { alert("이름과 생년월일을 입력해 주세요."); return; }
+      const ampm = document.getElementById("ampm").value;
+      const birthHour12 = document.getElementById("birthHour").value;
+      const birthMinute = document.getElementById("birthMinute").value;
 
-      const f = buildDetailedFortune({ name, birthDate, birthHour24: 12, timeUnknown: true });
+      if (!name || !birthDate) {
+        alert("이름과 태어난 날을 입력해 주세요.");
+        return;
+      }
+
+      const timeUnknown = ampm === "UNKNOWN" || birthHour12 === "00";
+      const birthHour24 = get24Hour(ampm, birthHour12);
+      const f = buildDetailedFortune({ 
+        name, 
+        birthDate, 
+        birthHour24, 
+        birthMinute: Number(birthMinute) || 0, 
+        timeUnknown 
+      });
+
       let livePrice = await fetchBTCPrice();
       const tradePlan = buildTradePlan(livePrice, f.score);
 
       document.getElementById("mainDecision").className = `big-text ${f.cssTone}`;
-      document.getElementById("mainDecision").innerText = `${name}님의 오늘의 투자 흐름: ${f.direction}`;
-      document.getElementById("mainSummary").innerText = `${f.zodiac}띠인 ${name}님, 오늘의 에너지 점수는 ${f.score}점입니다. ${f.overall}`;
+      document.getElementById("mainDecision").innerText = `${name}님의 오늘 흐름: ${f.direction}`;
+      document.getElementById("mainSummary").innerText = timeUnknown
+        ? `띠는 ${f.zodiac}, 중심 기운은 ${f.baseElement}, 시간은 모름으로 처리했습니다. 이 결과는 교육·오락 목적의 참고용 해석입니다.`
+        : `띠는 ${f.zodiac}, 중심 기운은 ${f.baseElement}, 시간 기운은 ${f.hourElement}, 오늘 흐름은 ${f.todayElement}입니다. 이 결과는 교육·오락 목적의 참고용 해석입니다.`;
+      
       document.getElementById("todayLabel").innerText = `분석 기준일: ${new Date().toLocaleDateString()}`;
       document.getElementById("signalBox").className = `signal-box ${tradePlan.signalClass}`;
       document.getElementById("signalBox").innerText = tradePlan.signal;
