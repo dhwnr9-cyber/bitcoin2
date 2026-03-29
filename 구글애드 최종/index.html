@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-adsense-account" content="ca-pub-2089139172723802" />
+  <meta name="description" content="비트코인, 금, WTI 차트와 시장 해설, 자주 묻는 질문, 개인정보처리방침, 이용약관을 한 페이지에서 볼 수 있는 마켓 인사이트 허브" />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#0f1115" />
+  <title>마켓 인사이트 허브 | 통합 페이지</title>
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2089139172723802"
+    crossorigin="anonymous"></script>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: #0f1115;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      line-height: 1.7;
+    }
+    a { color: #ffd08b; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(15,17,21,.92);
+      border-bottom: 1px solid #232b36;
+    }
+    .header-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+    }
+    .nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .nav button {
+      background: #171b22;
+      color: #cfd8e6;
+      border: 1px solid #2b3442;
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .nav button:hover {
+      background: #202733;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 24px 18px 60px;
+    }
+
+    .card, .hero-card, .info-card, .policy-card, .faq-card {
+      background: #171b22;
+      border: 1px solid #2b3442;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.22);
+    }
+
+    h1, h2, h3 {
+      margin-top: 0;
+      line-height: 1.35;
+    }
+    h1 { font-size: 32px; margin-bottom: 10px; }
+    h2 { font-size: 26px; margin-bottom: 12px; }
+    h3 { font-size: 18px; margin-bottom: 10px; color: #ffd08b; }
+
+    .muted { color: #a9b3c4; }
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #ffd08b;
+      background: rgba(247,147,26,.1);
+      border: 1px solid rgba(247,147,26,.2);
+      padding: 6px 10px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .hero {
+      display: none;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .hero.open { display: grid; }
+
+    .grid-2, .grid-3, .grid-4,
+    .hero-summary, .detail-grid, .market-grid, .recommend-grid, .institution-list {
+      display: grid;
+      gap: 14px;
+    }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .grid-4, .hero-summary, .detail-grid, .market-grid, .recommend-grid, .institution-list {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .stat, .hero-item, .detail-card, .market-card, .recommend-card, .institution-card {
+      background: #11161d;
+      border: 1px solid #313b49;
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .stat strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 6px;
+      color: #fff;
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      font-size: 22px;
+    }
+    .button-wrap {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    button.action-btn {
+      border: none;
+      background: #f7931a;
+      color: #fff;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+    button.action-btn:hover {
+      background: #ff9f2f;
+      transform: translateY(-1px);
+    }
+
+    .chart-section {
+      margin-top: 18px;
+      display: none;
+    }
+    .chart-section.active { display: block; }
+    .chart-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 0 0 12px;
+      color: #ffd08b;
+    }
+    .chart-box {
+      height: 700px;
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #313b49;
+      background: #0f1319;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    label {
+      color: #cfd8e6;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid #394455;
+      background: #0f1319;
+      color: #fff;
+      font-size: 15px;
+      outline: none;
+    }
+    input:focus, select:focus { border-color: #f7931a; }
+
+    .time-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+    }
+    .action-wrap {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .result-box { display: none; margin-top: 18px; }
+    .headline-box {
+      background: linear-gradient(135deg, rgba(247,147,26,.14), rgba(255,255,255,.03));
+      border: 1px solid #434d5e;
+      border-radius: 18px;
+      padding: 18px;
+      margin-top: 14px;
+    }
+    .headline-box p {
+      margin: 0;
+      line-height: 1.8;
+      color: #edf3fb;
+    }
+    .big-text {
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 1.6;
+    }
+    .good { color: #4ade80; }
+    .bad { color: #f87171; }
+    .mid { color: #fbbf24; }
+
+    .hero-item h3, .detail-card h4, .market-card h4, .recommend-card h4, .institution-card h4 {
+      margin: 0 0 10px;
+      color: #ffd08b;
+      font-size: 17px;
+    }
+    .hero-item p, .detail-card p, .market-card p, .recommend-card p, .institution-card p, .faq-card p, .policy-card p, .policy-card li, .info-card p {
+      margin: 0;
+      color: #dce4ef;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .mini-title {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: #fff;
+    }
+    .divider {
+      height: 1px;
+      background: #2b3440;
+      margin: 22px 0;
+      border: 0;
+    }
+    .price {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 6px 0 10px;
+    }
+    .source-line {
+      color: #8f9caf;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .zone {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      margin: 4px 6px 0 0;
+      font-size: 13px;
+      font-weight: bold;
+      border: 1px solid transparent;
+    }
+    .zone-long {
+      background: rgba(34,197,94,.13);
+      color: #56e08b;
+      border-color: rgba(86,224,139,.35);
+    }
+    .zone-short {
+      background: rgba(239,68,68,.12);
+      color: #ff8a8a;
+      border-color: rgba(255,138,138,.35);
+    }
+    .zone-neutral {
+      background: rgba(245,158,11,.12);
+      color: #ffca63;
+      border-color: rgba(255,202,99,.35);
+    }
+
+    .signal-box {
+      padding: 18px;
+      border-radius: 18px;
+      font-weight: bold;
+      font-size: 22px;
+      text-align: center;
+      margin-top: 14px;
+      border: 1px solid #3a4556;
+    }
+    .signal-long { background: rgba(34,197,94,.12); color: #4ade80; }
+    .signal-short { background: rgba(239,68,68,.12); color: #f87171; }
+    .signal-wait { background: rgba(245,158,11,.12); color: #fbbf24; }
+
+    .ad-wrap {
+      margin: 28px 0;
+      padding: 12px 0;
+    }
+
+    .toggle-section {
+      margin-top: 20px;
+    }
+    .toggle-button {
+      width: 100%;
+      text-align: left;
+      background: #171b22;
+      border: 1px solid #2b3442;
+      color: #fff;
+      border-radius: 18px;
+      padding: 18px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .toggle-button:hover {
+      background: #1d2430;
+    }
+    .toggle-content {
+      display: none;
+      margin-top: 12px;
+    }
+    .toggle-content.open {
+      display: block;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 12px;
+    }
+    .faq-item {
+      background: #11161d;
+      border: 1px solid #313b49;
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .faq-item h3 {
+      margin-bottom: 8px;
+    }
+
+    .policy-card h3 { margin-top: 26px; }
+    .policy-card ul { padding-left: 20px; }
+
+    .notice-box {
+      background: rgba(245,158,11,.08);
+      border: 1px solid rgba(245,158,11,.2);
+      border-radius: 16px;
+      padding: 16px;
+      color: #ffe1b4;
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 24px 0 10px;
+      color: #97a4b8;
+      font-size: 14px;
+      border-top: 1px solid #232b36;
+    }
+
+    @media (max-width: 900px) {
+      .hero.open { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      h1 { font-size: 28px; }
+      .time-grid { grid-template-columns: 1fr; }
+      .button-wrap { flex-direction: column; }
+      .button-wrap .action-btn { width: 100%; }
+    }
+  
+    .earnings-box {
+      background: linear-gradient(135deg, rgba(34,197,94,.10), rgba(255,255,255,.03));
+      border: 1px solid rgba(74,222,128,.25);
+      border-radius: 18px;
+      padding: 18px;
+      margin-top: 18px;
+    }
+    .earnings-big {
+      font-size: 30px;
+      font-weight: bold;
+      color: #7df0a7;
+      margin: 8px 0;
+      line-height: 1.3;
+    }
+    .share-wrap {
+      margin-top: 18px;
+    }
+    .share-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .share-btn {
+      border: 1px solid #313b49;
+      background: #11161d;
+      color: #fff;
+      border-radius: 12px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .share-btn:hover {
+      background: #1d2430;
+    }
+
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">마켓 인사이트 허브</div>
+      <nav class="nav" aria-label="주요 메뉴">
+        <button type="button" onclick="toggleIntro()">사이트 소개</button>
+        <button type="button" onclick="toggleSection('guideContent')">시장 읽는 방법</button>
+        <button type="button" onclick="toggleSection('faqContent')">자주 묻는 질문</button>
+        <button type="button" onclick="toggleSection('privacyContent')">개인정보처리방침</button>
+        <button type="button" onclick="toggleSection('termsContent')">이용약관</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="introSection" class="hero">
+      <div class="hero-card">
+        <span class="eyebrow">교육형 시장 정보 사이트</span>
+        <h1>비트코인 · 금 · WTI를 한 곳에서 보고,<br>시장 해석 방법까지 함께 이해하는 사이트</h1>
+        <p class="muted">
+          이 사이트는 차트만 보여주는 페이지가 아니라, 사용자가 시장 정보를 더 쉽게 읽고 해석할 수 있도록
+          설명, 리스크 관리 가이드, 활용 예시를 함께 제공하는 콘텐츠형 사이트입니다.
+        </p>
+        <ul>
+          <li>실시간 차트를 빠르게 확인할 수 있습니다.</li>
+          <li>비트코인, 금, WTI의 성격과 차이를 초보자도 이해할 수 있게 정리했습니다.</li>
+          <li>시장 판단은 참고용 정보로 제공하며, 과도한 확신 대신 리스크 관리를 강조합니다.</li>
+          <li>운세·사주형 기능은 오락적 요소로 제공되며 실제 투자 판단을 대체하지 않습니다.</li>
+        </ul>
+      </div>
+      <div class="hero-card">
+        <h2>이 사이트가 제공하는 핵심 가치</h2>
+        <div class="grid-2">
+          <div class="stat">
+            <strong>차트 접근성</strong>
+            복잡한 설치 없이 웹에서 바로 주요 자산 차트를 확인할 수 있습니다.
+          </div>
+          <div class="stat">
+            <strong>설명 중심 구성</strong>
+            단순한 신호보다 왜 그런 해석이 나오는지 문장으로 안내합니다.
+          </div>
+          <div class="stat">
+            <strong>탐색 쉬움</strong>
+            정보 섹션, 차트 섹션, 정책 섹션이 한 페이지에 정리되어 있습니다.
+          </div>
+          <div class="stat">
+            <strong>정책 친화적 구조</strong>
+            광고보다 콘텐츠와 사용자 경험을 우선하도록 페이지를 설계했습니다.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="charts">
+      <h2 class="section-title">실시간 차트</h2>
+      <p class="muted">
+        먼저 보고 싶은 자산 차트를 바로 열 수 있도록, 메인 화면은 차트 기능부터 시작되게 구성했습니다.
+      </p>
+
+      <div class="button-wrap">
+        <button class="action-btn" id="btcBtn" onclick="toggleChart('btc')">비트코인 차트 열기</button>
+        <button class="action-btn" id="goldBtn" onclick="toggleChart('gold')">금 차트 열기</button>
+        <button class="action-btn" id="wtiBtn" onclick="toggleChart('wti')">WTI 유가 차트 열기</button>
+      </div>
+
+      <div id="btcSection" class="chart-section">
+        <div class="chart-title">비트코인 차트</div>
+        <div id="btcChart" class="chart-box"></div>
+      </div>
+
+      <div id="goldSection" class="chart-section">
+        <div class="chart-title">금 차트</div>
+        <div id="goldChart" class="chart-box"></div>
+      </div>
+
+      <div id="wtiSection" class="chart-section">
+        <div class="chart-title">WTI 유가 차트</div>
+        <div id="wtiChart" class="chart-box"></div>
+      </div>
+    </section>
+
+    <div class="ad-wrap">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2089139172723802"
+           data-ad-slot="1234567890"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </div>
+
+    <section class="toggle-section">
+      <button class="toggle-button" type="button" onclick="toggleSection('guideContent')">시장 읽는 방법 열기</button>
+      <div id="guideContent" class="toggle-content">
+        <div class="card">
+          <h2 class="section-title">초보자를 위한 시장 읽는 방법</h2>
+          <div class="grid-2">
+            <article class="info-card">
+              <h3>1. 지지와 저항을 먼저 보세요</h3>
+              <p>가격이 여러 번 멈추거나 반전된 구간은 시장 참여자들이 많이 반응하는 자리일 수 있습니다. 이 구간은 진입보다 손절 기준을 정하는 데 더 유용하게 쓰일 때가 많습니다.</p>
+            </article>
+            <article class="info-card">
+              <h3>2. 한 번에 전부 들어가지 마세요</h3>
+              <p>변동성이 큰 시장에서는 분할 진입과 분할 청산이 훨씬 안정적입니다. 정확한 고점과 저점을 맞히는 것보다, 손실을 작게 유지하는 습관이 장기적으로 더 중요합니다.</p>
+            </article>
+            <article class="info-card">
+              <h3>3. 뉴스와 가격을 함께 보세요</h3>
+              <p>금리, ETF, 원유 재고, 지정학 뉴스 같은 요소는 가격 움직임의 배경이 됩니다. 차트는 결과를 보여주고, 뉴스는 이유를 설명하는 경우가 많습니다.</p>
+            </article>
+            <article class="info-card">
+              <h3>4. 높은 확률과 확실한 미래는 다릅니다</h3>
+              <p>시장 해석은 참고 정보일 뿐 확정 예언이 아닙니다. 이 사이트의 모든 추천 구간은 교육 목적의 참고값이며, 실제 투자 의사결정은 본인의 판단과 책임이 필요합니다.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="fortune">
+      <h2 class="section-title">오늘의 비트코인 운세</h2>
+      <p class="muted">
+        아래 기능은 교육·오락 목적의 보조 콘텐츠입니다. 실제 금융 자문이나 투자 권유가 아닙니다.
+      </p>
+
+      <div class="form-grid">
+        <div class="input-group">
+          <label for="name">이름</label>
+          <input type="text" id="name" placeholder="이름을 입력하세요" />
+        </div>
+
+        <div class="input-group">
+          <label for="birthDate">태어난 날</label>
+          <input type="date" id="birthDate" />
+        </div>
+
+        <div class="input-group">
+          <label>태어난 시간</label>
+          <div class="time-grid">
+            <select id="ampm"></select>
+            <select id="birthHour"></select>
+            <select id="birthMinute"></select>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-wrap">
+        <button class="action-btn" onclick="generateFortuneAndMarket()">오늘의 비트코인 운세 확인하기</button>
+      </div>
+
+      <div id="resultBox" class="result-box">
+        <div class="headline-box">
+          <div id="mainDecision" class="big-text"></div>
+          <p id="mainSummary" style="margin-top:10px;"></p>
+          <div id="todayLabel" class="source-line"></div>
+        </div>
+
+        <div id="signalBox" class="signal-box">추천 계산 중...</div>
+
+        <div class="hero-summary">
+          <div class="hero-item">
+            <h3>오늘의 핵심 기운</h3>
+            <p id="overallEnergy"></p>
+          </div>
+          <div class="hero-item">
+            <h3>오행 밸런스 해석</h3>
+            <p id="elementBalance"></p>
+          </div>
+          <div class="hero-item">
+            <h3>행운 포인트</h3>
+            <p id="luckyInfo"></p>
+          </div>
+          <div class="hero-item">
+            <h3>BTC 오늘의 태도</h3>
+            <p id="btcMindset"></p>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h3 class="mini-title">오늘의 참고 구간</h3>
+        <div class="recommend-grid">
+          <div class="recommend-card">
+            <h4>최종 참고 방향</h4>
+            <p id="finalRecommendText"></p>
+          </div>
+          <div class="recommend-card">
+            <h4>진입 참고가</h4>
+            <p id="entryRecommendText"></p>
+          </div>
+          <div class="recommend-card">
+            <h4>손절 / 목표가</h4>
+            <p id="tpSlText"></p>
+          </div>
+          <div class="recommend-card">
+            <h4>해석 이유</h4>
+            <p id="reasonText"></p>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h3 class="mini-title">상세 해설</h3>
+        <div class="detail-grid">
+          <div class="detail-card">
+            <h4>전체운</h4>
+            <p id="fortuneOverall"></p>
+          </div>
+          <div class="detail-card">
+            <h4>금전운</h4>
+            <p id="fortuneMoney"></p>
+          </div>
+          <div class="detail-card">
+            <h4>일·공부운</h4>
+            <p id="fortuneWork"></p>
+          </div>
+          <div class="detail-card">
+            <h4>대인·연애운</h4>
+            <p id="fortuneLove"></p>
+          </div>
+          <div class="detail-card">
+            <h4>건강운</h4>
+            <p id="fortuneHealth"></p>
+          </div>
+          <div class="detail-card">
+            <h4>오늘의 조언</h4>
+            <p id="fortuneAdvice"></p>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h3 class="mini-title">실시간 BTC + 참고 구간</h3>
+        <div class="market-grid">
+          <div class="market-card">
+            <h4>실시간 BTC 가격</h4>
+            <div id="livePrice" class="price">불러오는 중...</div>
+            <div id="livePriceSub" class="source-line"></div>
+          </div>
+
+          <div class="market-card">
+            <h4>Long 참고 구간</h4>
+            <div id="longPlan"></div>
+          </div>
+
+          <div class="market-card">
+            <h4>Short 참고 구간</h4>
+            <div id="shortPlan"></div>
+          </div>
+
+          <div class="market-card">
+            <h4>중요 가격대</h4>
+            <div id="zoneSummary"></div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h3 class="mini-title">시나리오</h3>
+        <div id="institutionList" class="institution-list"></div>
+
+
+        <div class="earnings-box">
+          <h3 class="mini-title">사주팔자상 오늘 비트코인으로 기대 가능한 수익 해석</h3>
+          <p id="yearEarningsSummary" class="muted">계산 전입니다.</p>
+          <div id="yearEarningsAmount" class="earnings-big">-</div>
+          <p id="yearEarningsDetail">이 항목은 교육·오락용 해석이며, 실제 수익을 보장하지 않습니다.</p>
+
+          <div class="share-wrap">
+            <h3 class="mini-title">결과 공유하기</h3>
+            <p class="muted">아래 버튼으로 오늘의 해석 결과를 공유할 수 있습니다.</p>
+            <div class="share-buttons">
+              <button type="button" class="share-btn" onclick="shareResult('kakao')">카카오톡</button>
+              <button type="button" class="share-btn" onclick="shareResult('telegram')">텔레그램</button>
+              <button type="button" class="share-btn" onclick="shareResult('instagram')">인스타그램</button>
+              <button type="button" class="share-btn" onclick="shareResult('facebook')">페이스북</button>
+              <button type="button" class="share-btn" onclick="shareResult('threads')">스레드</button>
+              <button type="button" class="share-btn" onclick="copyResultText()">결과 복사</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="foot-note">
+          ※ 이 기능은 교육·오락용 해석 도구입니다.<br>
+          ※ 투자 권유가 아니며, 실제 매매 책임은 본인에게 있습니다.<br>
+          ※ 가격 구간은 참고값으로 제공되며 고정된 미래를 의미하지 않습니다.
+        </div>
+      </div>
+    </section>
+
+    <div class="ad-wrap">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2089139172723802"
+           data-ad-slot="1234567890"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </div>
+
+    <section class="toggle-section">
+      <button class="toggle-button" type="button" onclick="toggleSection('faqContent')">자주 묻는 질문 열기</button>
+      <div id="faqContent" class="toggle-content">
+        <div class="faq-card">
+          <h2 class="section-title">자주 묻는 질문</h2>
+          <div class="faq-list">
+            <div class="faq-item">
+              <h3>이 사이트의 가격 구간 추천은 실제 투자 신호인가요?</h3>
+              <p>아니요. 교육과 참고 목적의 보조 정보입니다. 시장은 언제든 달라질 수 있으므로 실제 투자는 본인의 검토와 책임이 필요합니다.</p>
+            </div>
+            <div class="faq-item">
+              <h3>운세 기능은 어떤 의미인가요?</h3>
+              <p>사이트 체험을 재미있게 만들기 위한 오락적 요소입니다. 금융 자문, 사주 감정, 법률·세무 조언을 제공하지 않습니다.</p>
+            </div>
+            <div class="faq-item">
+              <h3>광고가 콘텐츠보다 너무 많아지지 않나요?</h3>
+              <p>이 사이트는 콘텐츠와 탐색을 우선하도록 설계했으며 광고는 보조 요소로만 배치했습니다. 향후에도 과도한 광고 배치를 지양합니다.</p>
+            </div>
+            <div class="faq-item">
+              <h3>차트 데이터는 어디서 오나요?</h3>
+              <p>차트는 TradingView 위젯을 통해 제공되며, BTC 가격은 공개 API를 이용해 참고용으로 불러옵니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="toggle-section">
+      <button class="toggle-button" type="button" onclick="toggleSection('privacyContent')">개인정보처리방침 열기</button>
+      <div id="privacyContent" class="toggle-content">
+        <div class="policy-card">
+          <h2>개인정보처리방침</h2>
+          <p class="muted">최종 업데이트: 2026-03-29</p>
+          <div class="notice-box">
+            본 개인정보처리방침은 마켓 인사이트 허브가 어떤 정보를 처리하는지, 그리고 방문자의 권리를 어떻게 보호하는지 설명합니다.
+          </div>
+
+          <h3>1. 운영 목적</h3>
+          <p>마켓 인사이트 허브는 비트코인, 금, WTI 차트와 교육형 시장 해설 콘텐츠를 제공하는 웹사이트입니다. 본 사이트는 정보 제공과 교육, 오락 목적의 기능을 제공하며 금융상품 판매, 투자 중개, 수익 보장을 하지 않습니다.</p>
+
+          <h3>2. 수집하는 정보</h3>
+          <p>현재 사이트는 회원가입 기능을 제공하지 않으며, 다음과 같은 범위에서만 정보를 처리할 수 있습니다.</p>
+          <ul>
+            <li>브라우저가 자동으로 전송하는 기본 접속 정보</li>
+            <li>이용 과정에서 브라우저 내에서만 입력되는 이름, 생년월일, 시간 값</li>
+            <li>광고 및 방문 통계 측정을 위한 쿠키 또는 유사 기술 정보</li>
+          </ul>
+          <p>이름, 생년월일, 시간 값은 현재 페이지 내 기능 실행을 위해 브라우저에서만 사용되며, 별도의 서버 저장 기능을 제공하지 않는 한 운영자가 별도로 보관하지 않습니다.</p>
+
+          <h3>3. 개인정보의 이용 목적</h3>
+          <ul>
+            <li>사이트 기능 제공 및 화면 내 결과 표시</li>
+            <li>웹페이지 품질 개선 및 사용자 경험 향상</li>
+            <li>광고 제공, 광고 성과 측정, 부정 사용 방지</li>
+            <li>법령상 요구사항 대응</li>
+          </ul>
+
+          <h3>4. 쿠키 및 광고 기술</h3>
+          <p>본 사이트는 Google AdSense 등 제3자 광고 서비스를 사용할 수 있습니다. 이러한 서비스는 쿠키를 사용하여 방문자의 관심사에 보다 적절한 광고를 제공할 수 있습니다.</p>
+
+          <h3>5. 제3자 제공 및 처리 위탁</h3>
+          <p>사이트 운영 과정에서 호스팅 제공업체, 트래픽 분석 도구, 광고 플랫폼 등이 제한적으로 정보를 처리할 수 있습니다. 다만 운영자는 관련 법령에 따라 필요한 범위에서만 서비스를 이용합니다.</p>
+
+          <h3>6. 보유 및 이용 기간</h3>
+          <p>운영자가 직접 저장하는 개인정보가 없는 경우, 별도 보유 기간은 적용되지 않습니다. 다만 광고 플랫폼, 호스팅 서비스, 로그 분석 도구 등 외부 서비스는 각자의 정책에 따라 일정 기간 정보를 보관할 수 있습니다.</p>
+
+          <h3>7. 이용자의 권리</h3>
+          <ul>
+            <li>개인정보 처리 여부 확인 요청</li>
+            <li>정정, 삭제, 처리 제한 요청</li>
+            <li>쿠키 설정 변경 또는 거부</li>
+          </ul>
+
+          <h3>8. 보안 조치</h3>
+          <p>운영자는 합리적인 범위에서 개인정보 보호를 위한 기술적·관리적 조치를 고려합니다. 다만 인터넷 전송 환경의 특성상 모든 위험을 완전히 제거할 수는 없습니다.</p>
+
+          <h3>9. 문의처</h3>
+          <p>개인정보 관련 문의는 아래 이메일로 연락해 주세요.<br><strong>dhwnr9@gmail.com</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="toggle-section">
+      <button class="toggle-button" type="button" onclick="toggleSection('termsContent')">이용약관 열기</button>
+      <div id="termsContent" class="toggle-content">
+        <div class="policy-card">
+          <h2>이용약관</h2>
+          <p class="muted">최종 업데이트: 2026-03-29</p>
+          <div class="notice-box">
+            본 약관은 마켓 인사이트 허브 웹사이트 이용과 관련한 기본 조건을 안내합니다.
+          </div>
+
+          <h3>1. 목적</h3>
+          <p>이 약관은 마켓 인사이트 허브가 제공하는 콘텐츠 및 웹페이지 기능의 이용 조건과 운영자와 방문자 간의 기본적인 권리와 의무를 규정하는 것을 목적으로 합니다.</p>
+
+          <h3>2. 서비스의 성격</h3>
+          <ul>
+            <li>비트코인, 금, WTI 등 시장 관련 차트 열람 기능</li>
+            <li>교육형 시장 해설 및 참고용 콘텐츠</li>
+            <li>오락 요소가 포함된 해석 도구</li>
+            <li>광고가 포함될 수 있는 무료 웹서비스</li>
+          </ul>
+
+          <h3>3. 투자 권유 아님</h3>
+          <p>본 사이트에 게시된 모든 정보, 설명, 가격 구간, 시나리오, 해석 결과는 교육 및 참고 목적의 콘텐츠입니다. 이는 금융상품에 대한 투자 권유, 자문, 중개, 수익 보장, 손실 보전을 의미하지 않습니다.</p>
+
+          <h3>4. 이용자의 의무</h3>
+          <ul>
+            <li>관련 법령과 공공질서를 위반하는 방식으로 서비스를 이용해서는 안 됩니다.</li>
+            <li>사이트의 정상적인 운영을 방해하는 행위를 해서는 안 됩니다.</li>
+            <li>자동화 도구를 사용한 과도한 요청, 비정상적 접속, 악성 행위를 해서는 안 됩니다.</li>
+            <li>사이트 콘텐츠를 무단 복제·배포하거나 허위로 출처를 표시해서는 안 됩니다.</li>
+          </ul>
+
+          <h3>5. 서비스 변경 및 중단</h3>
+          <p>운영자는 사이트 개선, 기술적 사유, 외부 서비스 변경, 법적 필요에 따라 서비스 내용 일부를 변경하거나 중단할 수 있습니다.</p>
+
+          <h3>6. 광고 및 외부 서비스</h3>
+          <p>본 사이트는 광고를 표시할 수 있으며, 외부 차트 제공 서비스나 광고 플랫폼과 연동될 수 있습니다. 외부 서비스 이용과 관련된 사항은 해당 서비스의 정책에 따릅니다.</p>
+
+          <h3>7. 면책</h3>
+          <ul>
+            <li>시장 급변, 외부 데이터 지연, 제3자 서비스 장애로 인한 정보 차이</li>
+            <li>방문자가 사이트 정보를 활용한 결과 발생한 손익</li>
+            <li>천재지변, 통신 장애, 브라우저 환경 문제로 인한 접속 실패</li>
+          </ul>
+
+          <h3>8. 지식재산권</h3>
+          <p>본 사이트에 독자적으로 작성된 설명, 구성, 문구, 디자인 요소의 권리는 별도 표시가 없는 한 운영자에게 있습니다. 다만 외부 위젯, 외부 로고, 제3자 제공 콘텐츠의 권리는 각 권리자에게 있습니다.</p>
+
+          <h3>9. 문의</h3>
+          <p>사이트 이용 관련 문의는 아래 이메일로 연락해 주세요.<br><strong>dhwnr9@gamail.com</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© 2026 마켓 인사이트 허브. All rights reserved.</div>
+    </footer>
+  </main>
+
+  <script src="https://s3.tradingview.com/tv.js"></script>
+  <script>
+    const chartState = {
+      btc: { loaded: false, visible: false },
+      gold: { loaded: false, visible: false },
+      wti: { loaded: false, visible: false }
+    };
+
+    const chartConfig = {
+      btc: {
+        buttonId: "btcBtn",
+        sectionId: "btcSection",
+        containerId: "btcChart",
+        symbol: "BINANCE:BTCUSDT",
+        openText: "비트코인 차트 열기",
+        closeText: "비트코인 차트 닫기"
+      },
+      gold: {
+        buttonId: "goldBtn",
+        sectionId: "goldSection",
+        containerId: "goldChart",
+        symbol: "TVC:GOLD",
+        openText: "금 차트 열기",
+        closeText: "금 차트 닫기"
+      },
+      wti: {
+        buttonId: "wtiBtn",
+        sectionId: "wtiSection",
+        containerId: "wtiChart",
+        symbol: "TVC:USOIL",
+        openText: "WTI 유가 차트 열기",
+        closeText: "WTI 유가 차트 닫기"
+      }
+    };
+
+    const MARKET_SNAPSHOT = {
+      updated: "manual",
+      majorSupportLow: 65000,
+      majorSupportHigh: 68000,
+      pivotSupport: 70900,
+      resistance: 74000,
+      optionsMagnet: 75000
+    };
+
+    const INSTITUTIONAL_OUTLOOKS = [
+      {
+        name: "학습용 강세 시나리오",
+        target: "$100,000",
+        memo: "강한 상승장이 이어질 때 심리적 목표 구간으로 자주 언급되는 예시입니다."
+      },
+      {
+        name: "학습용 중기 목표 구간",
+        target: "$85,000",
+        memo: "반등이 이어질 경우 중간 저항대로 해석할 수 있는 예시 값입니다."
+      },
+      {
+        name: "학습용 단기 저항 구간",
+        target: "$74,000 ~ $75,000",
+        memo: "단기 트레이더들이 차익실현 가능성을 살피는 교육용 참고 범위입니다."
+      }
+    ];
+
+    function toggleIntro() {
+      const intro = document.getElementById("introSection");
+      intro.classList.toggle("open");
+      if (intro.classList.contains("open")) {
+        intro.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    function toggleSection(id) {
+      const el = document.getElementById(id);
+      el.classList.toggle("open");
+      if (el.classList.contains("open")) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    function createChart(symbol, containerId) {
+      new TradingView.widget({
+        width: "100%",
+        height: 700,
+        symbol: symbol,
+        interval: "15",
+        timezone: "Asia/Seoul",
+        theme: "dark",
+        style: "1",
+        locale: "kr",
+        toolbar_bg: "#171b22",
+        enable_publishing: false,
+        hide_top_toolbar: false,
+        hide_legend: false,
+        save_image: true,
+        container_id: containerId
+      });
+    }
+
+    function toggleChart(type) {
+      const config = chartConfig[type];
+      const state = chartState[type];
+      const section = document.getElementById(config.sectionId);
+      const button = document.getElementById(config.buttonId);
+
+      if (!state.visible) {
+        section.classList.add("active");
+        button.textContent = config.closeText;
+
+        if (!state.loaded) {
+          createChart(config.symbol, config.containerId);
+          state.loaded = true;
+        }
+        state.visible = true;
+      } else {
+        section.classList.remove("active");
+        button.textContent = config.openText;
+        state.visible = false;
+      }
+    }
+
+    function initTimeSelects() {
+      const ampm = document.getElementById("ampm");
+      const hour = document.getElementById("birthHour");
+      const minute = document.getElementById("birthMinute");
+
+      ampm.innerHTML = `
+        <option value="UNKNOWN">모름</option>
+        <option value="AM">오전</option>
+        <option value="PM">오후</option>
+      `;
+
+      hour.innerHTML = `<option value="00">모름</option>`;
+      minute.innerHTML = `<option value="00">모름</option>`;
+
+      for (let h = 1; h <= 12; h++) {
+        const hh = String(h).padStart(2, "0");
+        const opt = document.createElement("option");
+        opt.value = hh;
+        opt.textContent = `${hh}시`;
+        hour.appendChild(opt);
+      }
+
+      for (let m = 0; m <= 59; m++) {
+        const mm = String(m).padStart(2, "0");
+        const opt = document.createElement("option");
+        opt.value = mm;
+        opt.textContent = `${mm}분`;
+        minute.appendChild(opt);
+      }
+    }
+
+    function convertNameToNumber(name) {
+      let total = 0;
+      for (let i = 0; i < name.length; i++) total += name.charCodeAt(i);
+      return total;
+    }
+
+    function get24Hour(ampm, hour12) {
+      let h = Number(hour12);
+      if (ampm === "UNKNOWN") return 12;
+      if (ampm === "AM") return h === 12 ? 0 : h;
+      return h === 12 ? 12 : h + 12;
+    }
+
+    function getZodiac(year) {
+      const animals = ["원숭이","닭","개","돼지","쥐","소","호랑이","토끼","용","뱀","말","양"];
+      return animals[year % 12];
+    }
+
+    function getElementByYear(year) {
+      const elements = ["금","수","목","화","토"];
+      return elements[year % 5];
+    }
+
+    function getElementByHour(hour24) {
+      if (hour24 >= 23 || hour24 < 3) return "수";
+      if (hour24 < 7) return "목";
+      if (hour24 < 11) return "화";
+      if (hour24 < 15) return "토";
+      if (hour24 < 19) return "금";
+      return "수";
+    }
+
+    function getTodayElement(date) {
+      const elements = ["목","화","토","금","수"];
+      return elements[date.getDay() % 5];
+    }
+
+    function buildDetailedFortune({ name, birthDate, birthHour24, birthMinute, timeUnknown }) {
+      const today = new Date();
+      const [y, m, d] = birthDate.split("-").map(Number);
+      const zodiac = getZodiac(y);
+      const baseElement = getElementByYear(y);
+      const hourElement = timeUnknown ? "중립" : getElementByHour(birthHour24);
+      const todayElement = getTodayElement(today);
+      const nameNum = convertNameToNumber(name);
+
+      const seed =
+        (y * 17) + (m * 23) + (d * 31) +
+        (birthHour24 * 19) + (birthMinute * 13) +
+        (today.getFullYear() * 7) + ((today.getMonth() + 1) * 11) +
+        (today.getDate() * 29) + (nameNum * 3);
+
+      const score = ((seed % 101) + 101) % 101;
+
+      let direction = "관망";
+      let cssTone = "mid";
+
+      if (score >= 70) {
+        direction = "LONG 우세";
+        cssTone = "good";
+      } else if (score < 45) {
+        direction = "SHORT 우세";
+        cssTone = "bad";
+      }
+
+      const luckyColors = { 목: "초록, 민트", 화: "주황, 레드", 토: "베이지, 골드", 금: "화이트, 실버", 수: "블루, 네이비", 중립: "화이트, 그레이" };
+      const luckyNumbers = { 목: "3, 8", 화: "2, 7", 토: "5, 9", 금: "4, 6", 수: "1, 0", 중립: "5" };
+
+      return {
+        score, direction, cssTone, zodiac, baseElement, hourElement, todayElement,
+        luckyColor: luckyColors[timeUnknown ? "중립" : todayElement],
+        luckyNumber: luckyNumbers[timeUnknown ? "중립" : todayElement],
+        elementComment: timeUnknown
+          ? `태어난 시간을 모름으로 선택해서 시간 기운은 중립값으로 반영했습니다. 타고난 중심 기운은 ${baseElement}, 오늘 흐름은 ${todayElement}입니다.`
+          : `타고난 중심 기운은 ${baseElement}, 시간 기운은 ${hourElement}, 오늘 흐름은 ${todayElement}입니다.`,
+        overall: score >= 70
+          ? "오늘은 전반적으로 밀고 나가는 에너지가 강한 날입니다. 다만 추격보다 눌림에서 판단하는 것이 좋습니다."
+          : score < 45
+          ? "오늘은 방어적 태도가 잘 맞는 날입니다. 무리한 진입보다 반등 확인 후 대응이 어울립니다."
+          : "오늘은 공격도 방어도 애매한 중립 구간입니다. 짧은 대응이나 관망이 잘 맞습니다.",
+        money: score >= 70
+          ? "금전운은 비교적 좋은 편입니다. 다만 한 번에 크게 들어가기보다 분할 접근이 좋습니다."
+          : score < 45
+          ? "금전운은 손실 관리가 중요합니다. 복구 심리로 무리하면 흐름이 더 흔들릴 수 있습니다."
+          : "금전운은 보합권입니다. 손익비 좋은 자리만 선별하는 것이 중요합니다.",
+        work: "오늘은 기준을 세워 차분하게 진행하면 결과가 더 좋습니다.",
+        love: "대인관계는 말투를 부드럽게 가져가면 훨씬 좋습니다.",
+        health: "과한 긴장과 피로 누적에 주의하세요.",
+        advice: score >= 70
+          ? "오늘은 강세 마인드가 맞지만 추격은 피하고 분할 진입이 좋습니다."
+          : score < 45
+          ? "오늘은 보수적으로 보고 반등 저항에서 숏 관점을 먼저 확인하는 편이 좋습니다."
+          : "오늘은 확신 없는 자리에서 쉬는 것도 좋은 선택입니다."
+      };
+    }
+
+    async function fetchBTCPrice() {
+      try {
+        const res = await fetch("https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT");
+        const data = await res.json();
+        return Number(data.price);
+      } catch (e) {
+        return null;
+      }
+    }
+
+    function formatPrice(value) {
+      return "$" + Number(value).toLocaleString("en-US", { maximumFractionDigits: 0 });
+    }
+
+    function buildTradePlan(livePrice, fortuneScore) {
+      const s = MARKET_SNAPSHOT;
+      const longEntry1 = Math.round(livePrice * 0.985);
+      const longEntry2 = Math.round((s.majorSupportLow + s.majorSupportHigh) / 2);
+      const longStop = Math.round(s.majorSupportLow - 500);
+      const longTp1 = Math.round(s.pivotSupport);
+      const longTp2 = Math.round(s.resistance);
+      const shortEntry1 = Math.round(s.resistance);
+      const shortEntry2 = Math.round(s.optionsMagnet);
+      const shortStop = Math.round(s.optionsMagnet + 700);
+      const shortTp1 = Math.round(s.pivotSupport);
+      const shortTp2 = Math.round(s.majorSupportHigh);
+
+      let signal = "관망";
+      let signalClass = "signal-wait";
+      let finalRecommendText = "";
+      let entryRecommendText = "";
+      let tpSlText = "";
+      let reasonText = "";
+
+      if (fortuneScore >= 70) {
+        signal = "오늘은 강세 참고";
+        signalClass = "signal-long";
+        finalRecommendText = `오락용 해석 결과상 강세 쪽 참고가 우세합니다. 다만 추격 매수보다 조정 시 분할 접근이 더 적절합니다.`;
+        entryRecommendText = `1차 참고가: ${formatPrice(longEntry1)}<br>2차 참고가: ${formatPrice(longEntry2)}<br>조정 구간 분할 접근 예시`;
+        tpSlText = `리스크 기준 예시: ${formatPrice(longStop)}<br>목표가 예시 1: ${formatPrice(longTp1)}<br>목표가 예시 2: ${formatPrice(longTp2)}`;
+        reasonText = `오락용 해석 점수가 높고, 지지 구간 접근 시 학습용 상승 시나리오 설명에 활용하기 쉬운 구조이기 때문입니다.`;
+      } else if (fortuneScore < 45) {
+        signal = "오늘은 약세 참고";
+        signalClass = "signal-short";
+        finalRecommendText = `오락용 해석 결과상 약세 쪽 참고가 우세합니다. 다만 급락 추격보다 반등 저항 확인 후 접근이 더 적절합니다.`;
+        entryRecommendText = `1차 참고가: ${formatPrice(shortEntry1)}<br>2차 참고가: ${formatPrice(shortEntry2)}<br>반등 실패 확인 후 접근 예시`;
+        tpSlText = `리스크 기준 예시: ${formatPrice(shortStop)}<br>목표가 예시 1: ${formatPrice(shortTp1)}<br>목표가 예시 2: ${formatPrice(shortTp2)}`;
+        reasonText = `오락용 해석 점수가 낮고, 저항 구간 반응을 학습용 약세 시나리오로 설명하기 쉬운 구조이기 때문입니다.`;
+      } else {
+        signal = "오늘은 중립 참고";
+        signalClass = "signal-wait";
+        finalRecommendText = `한 방향 확신이 약한 중립 구간입니다. 애매한 자리에서는 쉬는 선택도 유효한 학습 포인트가 됩니다.`;
+        entryRecommendText = `강세 후보: ${formatPrice(longEntry1)} 아래 눌림 확인<br>약세 후보: ${formatPrice(shortEntry1)} 위 반등 실패 확인<br>둘 다 애매하면 관망`;
+        tpSlText = `손절 기준은 짧게 잡고,<br>목표가는 가까운 지지/저항 범위 내에서만 참고`;
+        reasonText = `해석 점수가 중립이라 방향성보다 리스크 관리와 기다림의 중요성을 설명하기에 적합합니다.`;
+      }
+
+      return {
+        signal, signalClass, finalRecommendText, entryRecommendText, tpSlText, reasonText,
+        longPlanHTML: `
+          <p style="margin:0 0 10px; line-height:1.7;">
+            <span class="zone zone-long">참고 1: ${formatPrice(longEntry1)}</span>
+            <span class="zone zone-long">참고 2: ${formatPrice(longEntry2)}</span>
+            <span class="zone zone-long">리스크 기준: ${formatPrice(longStop)}</span>
+          </p>
+          <p style="margin:0; color:#dbe5f1; line-height:1.7;">
+            목표 예시: ${formatPrice(longTp1)} / ${formatPrice(longTp2)}
+          </p>
+        `,
+        shortPlanHTML: `
+          <p style="margin:0 0 10px; line-height:1.7;">
+            <span class="zone zone-short">참고 1: ${formatPrice(shortEntry1)}</span>
+            <span class="zone zone-short">참고 2: ${formatPrice(shortEntry2)}</span>
+            <span class="zone zone-short">리스크 기준: ${formatPrice(shortStop)}</span>
+          </p>
+          <p style="margin:0; color:#dbe5f1; line-height:1.7;">
+            목표 예시: ${formatPrice(shortTp1)} / ${formatPrice(shortTp2)}
+          </p>
+        `,
+        zoneSummaryHTML: `
+          <p style="margin:0 0 10px; line-height:1.8;">
+            <span class="zone zone-neutral">핵심 지지: ${formatPrice(s.majorSupportLow)} ~ ${formatPrice(s.majorSupportHigh)}</span>
+            <span class="zone zone-neutral">중간 지지: ${formatPrice(s.pivotSupport)}</span>
+            <span class="zone zone-neutral">저항: ${formatPrice(s.resistance)}</span>
+            <span class="zone zone-neutral">강한 저항: ${formatPrice(s.optionsMagnet)}</span>
+          </p>
+        `
+      };
+    }
+
+    function renderInstitutions() {
+      const wrap = document.getElementById("institutionList");
+      wrap.innerHTML = "";
+      INSTITUTIONAL_OUTLOOKS.forEach(item => {
+        const el = document.createElement("div");
+        el.className = "institution-card";
+        el.innerHTML = `<h4>${item.name}</h4><div class="price">${item.target}</div><p>${item.memo}</p>`;
+        wrap.appendChild(el);
+      });
+    }
+
+    async function generateFortuneAndMarket() {
+      const name = document.getElementById("name").value.trim();
+      const birthDate = document.getElementById("birthDate").value;
+      const ampm = document.getElementById("ampm").value;
+      const birthHour12 = document.getElementById("birthHour").value;
+      const birthMinute = document.getElementById("birthMinute").value;
+
+      if (!name || !birthDate) {
+        alert("이름과 태어난 날을 입력해 주세요.");
+        return;
+      }
+
+      const timeUnknown = ampm === "UNKNOWN" || birthHour12 === "00";
+      const birthHour24 = get24Hour(ampm, birthHour12);
+      const fortune = buildDetailedFortune({ name, birthDate, birthHour24, birthMinute: Number(birthMinute), timeUnknown });
+      const now = new Date();
+      const weekNames = ["일","월","화","수","목","금","토"];
+      const todayStr = `${now.getFullYear()}년 ${now.getMonth()+1}월 ${now.getDate()}일 (${weekNames[now.getDay()]})`;
+
+      let livePrice = await fetchBTCPrice();
+      if (!livePrice) livePrice = 70000;
+
+      const tradePlan = buildTradePlan(livePrice, fortune.score);
+      const decisionClass = fortune.cssTone === "good" ? "good" : fortune.cssTone === "bad" ? "bad" : "mid";
+
+      document.getElementById("mainDecision").className = `big-text ${decisionClass}`;
+      document.getElementById("mainDecision").innerText = `${name}님의 오늘 흐름: ${fortune.direction}`;
+      document.getElementById("mainSummary").innerText = timeUnknown
+        ? `띠는 ${fortune.zodiac}, 중심 기운은 ${fortune.baseElement}, 시간은 모름으로 처리했습니다. 이 결과는 교육·오락 목적의 참고용 해석입니다.`
+        : `띠는 ${fortune.zodiac}, 중심 기운은 ${fortune.baseElement}, 시간 기운은 ${fortune.hourElement}, 오늘 흐름은 ${fortune.todayElement}입니다. 이 결과는 교육·오락 목적의 참고용 해석입니다.`;
+      document.getElementById("todayLabel").innerText = `기준일: ${todayStr}`;
+      document.getElementById("signalBox").className = `signal-box ${tradePlan.signalClass}`;
+      document.getElementById("signalBox").innerText = tradePlan.signal;
+      document.getElementById("overallEnergy").innerText = `오늘의 기운 점수는 ${fortune.score}점입니다. ${fortune.direction} 쪽 성향이 보입니다.`;
+      document.getElementById("elementBalance").innerText = fortune.elementComment;
+      document.getElementById("luckyInfo").innerText = `행운 색상: ${fortune.luckyColor} / 행운 숫자: ${fortune.luckyNumber}`;
+      document.getElementById("btcMindset").innerText =
+        fortune.score >= 70 ? "눌림에서 강세 시나리오를 공부하기 좋은 날입니다."
+        : fortune.score < 45 ? "반등 저항에서 약세 시나리오를 공부하기 좋은 날입니다."
+        : "확신 없는 자리에서 기다리는 법을 공부하기 좋은 날입니다.";
+
+      document.getElementById("finalRecommendText").innerHTML = tradePlan.finalRecommendText;
+      document.getElementById("entryRecommendText").innerHTML = tradePlan.entryRecommendText;
+      document.getElementById("tpSlText").innerHTML = tradePlan.tpSlText;
+      document.getElementById("reasonText").innerHTML = tradePlan.reasonText;
+      document.getElementById("fortuneOverall").innerText = fortune.overall;
+      document.getElementById("fortuneMoney").innerText = fortune.money;
+      document.getElementById("fortuneWork").innerText = fortune.work;
+      document.getElementById("fortuneLove").innerText = fortune.love;
+      document.getElementById("fortuneHealth").innerText = fortune.health;
+      document.getElementById("fortuneAdvice").innerText = fortune.advice;
+      document.getElementById("livePrice").innerText = formatPrice(livePrice);
+      document.getElementById("livePriceSub").innerText = "Binance 공개 API 기준 참고 값";
+      document.getElementById("longPlan").innerHTML = tradePlan.longPlanHTML;
+      document.getElementById("shortPlan").innerHTML = tradePlan.shortPlanHTML;
+      document.getElementById("zoneSummary").innerHTML = tradePlan.zoneSummaryHTML;
+
+      const earnings = buildYearEarnings(fortune.score, name);
+      document.getElementById("yearEarningsSummary").innerText = earnings.summary;
+      document.getElementById("yearEarningsAmount").innerText = formatUsdCompact(earnings.amount);
+      document.getElementById("yearEarningsDetail").innerText = earnings.detail;
+
+      renderInstitutions();
+      document.getElementById("resultBox").style.display = "block";
+    }
+
+
+    function formatUsdCompact(value) {
+      return "$" + Number(value).toLocaleString("en-US", { maximumFractionDigits: 0 });
+    }
+
+    function buildYearEarnings(score, name) {
+      const dailyBands = [
+        { min: 0, max: 24, amount: 80, text: "오늘은 큰 금액을 노리기보다 손실을 줄이고 흐름을 파악하는 쪽이 더 잘 맞는 날입니다." },
+        { min: 25, max: 44, amount: 180, text: "수익 기회가 있어도 변동성이 강할 수 있어 무리한 진입보다 짧고 보수적인 대응이 더 어울립니다." },
+        { min: 45, max: 69, amount: 450, text: "중립 이상 흐름으로, 원칙을 지키면 하루 기준 의미 있는 수익을 기대해볼 수 있는 날입니다." },
+        { min: 70, max: 84, amount: 900, text: "좋은 진입 타이밍을 잡을 가능성이 비교적 높아 만족도 있는 하루 수익 흐름으로 해석됩니다." },
+        { min: 85, max: 100, amount: 1800, text: "강한 상승 흐름을 탈 가능성이 높아 보이지만, 욕심을 줄일수록 실제 체감 결과는 더 좋아질 수 있습니다." }
+      ];
+      const band = dailyBands.find(b => score >= b.min && score <= b.max) || dailyBands[2];
+      return {
+        amount: band.amount,
+        summary: `${name}님의 사주팔자 흐름을 기준으로 봤을 때, 오늘 비트코인에서 기대 가능한 수익 해석치는 아래와 같습니다.`,
+        detail: `${band.text} 오늘 최대 기대 수익 해석 예시는 ${formatUsdCompact(band.amount)} 입니다. 실제 수익은 시장 상황, 투자금, 진입 방식에 따라 달라질 수 있습니다.`
+      };
+    }
+
+    function makeShareText() {
+      const main = document.getElementById("mainDecision")?.innerText || "";
+      const signal = document.getElementById("signalBox")?.innerText || "";
+      const amount = document.getElementById("yearEarningsAmount")?.innerText || "";
+      const detail = document.getElementById("yearEarningsDetail")?.innerText || "";
+      return `[마켓 인사이트 허브 결과]\n${main}\n${signal}\n오늘 BTC 기대 수익 해석: ${amount}\n${detail}`;
+    }
+
+    function copyResultText() {
+      const text = makeShareText();
+      navigator.clipboard.writeText(text).then(() => {
+        alert("결과가 복사되었습니다.");
+      }).catch(() => {
+        alert("복사에 실패했습니다.");
+      });
+    }
+
+    function shareResult(platform) {
+      const text = encodeURIComponent(makeShareText());
+      const url = encodeURIComponent(window.location.href);
+      let shareUrl = "";
+
+      if (platform === "telegram") {
+        shareUrl = `https://t.me/share/url?url=${url}&text=${text}`;
+        window.open(shareUrl, "_blank");
+        return;
+      }
+      if (platform === "facebook") {
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`;
+        window.open(shareUrl, "_blank");
+        return;
+      }
+      if (platform === "threads") {
+        copyResultText();
+        alert("스레드는 직접 링크 공유 방식이 제한적이라 결과를 복사해두었습니다. 스레드 앱에 붙여넣어 공유해 주세요.");
+        return;
+      }
+      if (platform === "instagram") {
+        copyResultText();
+        alert("인스타그램은 웹 직접 공유 제약이 있어 결과를 복사해두었습니다. 스토리나 게시물에 붙여넣어 공유해 주세요.");
+        return;
+      }
+      if (platform === "kakao") {
+        copyResultText();
+        alert("카카오톡 웹 직접 공유는 카카오 SDK 설정이 필요해 결과를 복사해두었습니다. 카카오톡에 붙여넣어 공유해 주세요.");
+        return;
+      }
+    }
+
+
+    initTimeSelects();
+
+    window.addEventListener("load", function () {
+      const ads = document.querySelectorAll(".adsbygoogle");
+      ads.forEach(() => {
+        try {
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (e) {
+          console.warn("AdSense init skipped:", e);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
