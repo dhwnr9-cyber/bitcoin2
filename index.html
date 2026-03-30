@@ -1337,6 +1337,10 @@
         document.getElementById("birthDate").value = birthDate;
       }
 
+      const ampm = document.getElementById("ampm").value;
+      const birthHour12 = document.getElementById("birthHour").value;
+      const birthMinute = document.getElementById("birthMinute").value;
+
       if (!name || !birthDate || !birthDate.includes("-")) {
         alert("이름과 태어난 날(YYYY-MM-DD)을 정확히 입력해 주세요.");
         return;
