@@ -235,6 +235,19 @@
       height: 450px;
     }
 
+    /* 드래그 앤 드롭 스타일 */
+    .grid-view .chart-section {
+      cursor: grab;
+    }
+    .grid-view .chart-section:active {
+      cursor: grabbing;
+    }
+    .sortable-ghost {
+      opacity: 0.4;
+      background-color: var(--stat-bg);
+      border: 2px dashed var(--link-color);
+    }
+
     .chart-title {
       font-size: 20px;
       font-weight: bold;
@@ -910,7 +923,9 @@
   </div>
 
   <script src="https://s3.tradingview.com/tv.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
   <script>
+    let sortableInstance = null;
     function acceptCookies() {
       document.getElementById("cookieBanner").style.display = "none";
       localStorage.setItem("cookiesAccepted", "true");
@@ -1060,6 +1075,23 @@
       
       btn.textContent = isGridView ? "개별 차트 보기" : "모든 차트 모아보기";
       btn.style.background = isGridView ? "#f7931a" : "#3d495c";
+
+      if (isGridView) {
+        // 드래그 앤 드롭 활성화
+        sortableInstance = new Sortable(container, {
+          animation: 150,
+          ghostClass: 'sortable-ghost',
+          onEnd: function() {
+            console.log('차트 위치 변경됨');
+          }
+        });
+      } else {
+        // 드래그 앤 드롭 비활성화
+        if (sortableInstance) {
+          sortableInstance.destroy();
+          sortableInstance = null;
+        }
+      }
 
       const types = ['btc', 'wti', 'gold'];
       types.forEach(type => {
