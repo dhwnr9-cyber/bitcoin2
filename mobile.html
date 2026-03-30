@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-adsense-account" content="ca-pub-2089139172723802" />
+  <meta name="description" content="비트코인, 금, WTI 차트와 시장 해설, 자주 묻는 질문, 개인정보처리방침, 이용약관을 한 페이지에서 볼 수 있는 마켓 인사이트 허브" />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#0f1115" />
+  <title>마켓 인사이트 허브 | 통합 페이지</title>
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2089139172723802"
+    crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --bg-color: #0f1115;
+      --text-color: #fff;
+      --header-bg: rgba(15,17,21,.92);
+      --card-bg: #171b22;
+      --card-border: #2b3442;
+      --muted-text: #a9b3c4;
+      --stat-bg: #11161d;
+      --stat-border: #313b49;
+      --input-bg: #0f1319;
+      --input-border: #394455;
+      --link-color: #ffd08b;
+      --divider-color: #2b3440;
+    }
+
+    [data-theme="light"] {
+      --bg-color: #f0f2f5;
+      --text-color: #1a1d23;
+      --header-bg: rgba(255,255,255,.92);
+      --card-bg: #ffffff;
+      --card-border: #d1d9e6;
+      --muted-text: #4b5563;
+      --stat-bg: #f8fafc;
+      --stat-border: #e2e8f0;
+      --input-bg: #ffffff;
+      --input-border: #cbd5e1;
+      --link-color: #d97706;
+      --divider-color: #e5e7eb;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-family: Arial, sans-serif;
+      line-height: 1.7;
+      transition: background 0.3s, color 0.3s;
+    }
+    a { color: var(--link-color); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: var(--header-bg);
+      border-bottom: 1px solid var(--card-border);
+    }
+    .header-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--text-color);
+    }
+    .nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .nav button {
+      background: var(--card-bg);
+      color: var(--text-color);
+      border: 1px solid var(--card-border);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .nav button:hover {
+      background: var(--stat-bg);
+    }
+
+    /* 테마 토글 버튼 스타일 */
+    .theme-toggle {
+      background: var(--card-bg) !important;
+      color: var(--text-color) !important;
+      border: 1px solid var(--card-border) !important;
+      border-radius: 999px !important;
+      padding: 8px 16px !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      font-size: 14px !important;
+      font-weight: 600 !important;
+      transition: all 0.3s;
+    }
+    .theme-toggle:hover {
+      background: var(--stat-bg) !important;
+      border-color: #f7931a !important;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 24px 18px 60px;
+    }
+
+    .card, .hero-card, .info-card, .policy-card, .faq-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    h1, h2, h3 {
+      margin-top: 0;
+      line-height: 1.35;
+      color: var(--text-color);
+    }
+    h1 { font-size: 32px; margin-bottom: 10px; }
+    h2 { font-size: 26px; margin-bottom: 12px; }
+    h3 { font-size: 18px; margin-bottom: 10px; color: var(--link-color); }
+
+    .muted { color: var(--muted-text); }
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #f7931a;
+      background: rgba(247,147,26,.1);
+      border: 1px solid rgba(247,147,26,.2);
+      padding: 6px 10px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .hero {
+      display: none;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    .hero.open { display: grid; }
+
+    .grid-2, .grid-3, .grid-4,
+    .hero-summary, .detail-grid, .market-grid, .recommend-grid, .institution-list {
+      display: grid;
+      gap: 14px;
+    }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .grid-4, .hero-summary, .detail-grid, .market-grid, .recommend-grid, .institution-list {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .stat, .hero-item, .detail-card, .market-card, .recommend-card, .institution-card {
+      background: var(--stat-bg);
+      border: 1px solid var(--stat-border);
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .stat strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 6px;
+      color: var(--text-color);
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      font-size: 22px;
+    }
+    .button-wrap {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    button.action-btn {
+      border: none;
+      background: #f7931a;
+      color: #fff;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+    button.action-btn:hover {
+      background: #ff9f2f;
+      transform: translateY(-1px);
+    }
+
+    .chart-section {
+      margin-top: 18px;
+      display: none;
+    }
+    .chart-section.active { display: block; }
+    
+    /* 차트 모아보기 그리드 스타일 */
+    .charts-container.grid-view {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .grid-view .chart-section {
+      display: block;
+      margin-top: 0;
+    }
+    .grid-view .chart-box {
+      height: 380px;
+    }
+    @media (max-width: 640px) {
+      .grid-view .chart-box {
+        height: 320px;
+      }
+    }
+
+    /* 드래그 앤 드롭 스타일 */
+    .grid-view .chart-section {
+      cursor: grab;
+    }
+    .grid-view .chart-section:active {
+      cursor: grabbing;
+    }
+    .sortable-ghost {
+      opacity: 0.4;
+      background-color: var(--stat-bg);
+      border: 2px dashed var(--link-color);
+    }
+
+    .chart-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 0 0 12px;
+      color: var(--link-color);
+    }
+    .chart-box {
+      height: 700px;
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--stat-border);
+      background: var(--input-bg);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    label {
+      color: var(--muted-text);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--input-border);
+      background: var(--input-bg);
+      color: var(--text-color);
+      font-size: 15px;
+      outline: none;
+    }
+    input:focus, select:focus { border-color: #f7931a; }
+
+    .time-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+    }
+    .action-wrap {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .result-box { display: none; margin-top: 18px; }
+    .headline-box {
+      background: linear-gradient(135deg, rgba(247,147,26,.14), rgba(255,255,255,.03));
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 18px;
+      margin-top: 14px;
+    }
+    .headline-box p {
+      margin: 0;
+      line-height: 1.8;
+      color: var(--text-color);
+    }
+    .big-text {
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 1.6;
+    }
+    .good { color: #4ade80; }
+    .bad { color: #f87171; }
+    .mid { color: #fbbf24; }
+
+    .hero-item h3, .detail-card h4, .market-card h4, .recommend-card h4, .institution-card h4 {
+      margin: 0 0 10px;
+      color: var(--link-color);
+      font-size: 17px;
+    }
+    .hero-item p, .detail-card p, .market-card p, .recommend-card p, .institution-card p, .faq-card p, .policy-card p, .policy-card li, .info-card p {
+      margin: 0;
+      color: var(--text-color);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .mini-title {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: var(--text-color);
+    }
+    .divider {
+      height: 1px;
+      background: var(--divider-color);
+      margin: 22px 0;
+      border: 0;
+    }
+    .price {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 6px 0 10px;
+    }
+    .source-line {
+      color: var(--muted-text);
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .zone {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      margin: 4px 6px 0 0;
+      font-size: 13px;
+      font-weight: bold;
+      border: 1px solid transparent;
+    }
+    .zone-long {
+      background: rgba(34,197,94,.13);
+      color: #56e08b;
+      border-color: rgba(86,224,139,.35);
+    }
+    .zone-short {
+      background: rgba(239,68,68,.12);
+      color: #ff8a8a;
+      border-color: rgba(255,138,138,.35);
+    }
+    .zone-neutral {
+      background: rgba(245,158,11,.12);
+      color: #ffca63;
+      border-color: rgba(255,202,99,.35);
+    }
+
+    .signal-box {
+      padding: 18px;
+      border-radius: 18px;
+      font-weight: bold;
+      font-size: 22px;
+      text-align: center;
+      margin-top: 14px;
+      border: 1px solid var(--card-border);
+    }
+    .signal-long { background: rgba(34,197,94,.12); color: #4ade80; }
+    .signal-short { background: rgba(239,68,68,.12); color: #f87171; }
+    .signal-wait { background: rgba(245,158,11,.12); color: #fbbf24; }
+
+    .ad-wrap {
+      margin: 28px 0;
+      padding: 12px 0;
+    }
+
+    .toggle-section {
+      margin-top: 20px;
+    }
+    .toggle-button {
+      width: 100%;
+      text-align: left;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-color);
+      border-radius: 18px;
+      padding: 18px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .toggle-button:hover {
+      background: var(--stat-bg);
+    }
+    .toggle-content {
+      display: none;
+      margin-top: 12px;
+    }
+    .toggle-content.open {
+      display: block;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 12px;
+    }
+    .faq-item {
+      background: var(--stat-bg);
+      border: 1px solid var(--stat-border);
+      border-radius: 16px;
+      padding: 16px;
+    }
+    .faq-item h3 {
+      margin-bottom: 8px;
+    }
+
+    .policy-card h3 { margin-top: 26px; }
+    .policy-card ul { padding-left: 20px; }
+
+    .notice-box {
+      background: rgba(245,158,11,.08);
+      border: 1px solid rgba(245,158,11,.2);
+      border-radius: 16px;
+      padding: 16px;
+      color: var(--link-color);
+    }
+
+    /* 쿠키 안내 바너 추가 */
+    .cookie-banner {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 18px 24px;
+      border-radius: 18px;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      gap: 20px;
+      display: none;
+    }
+    .cookie-banner p { margin: 0; font-size: 14px; color: var(--muted-text); line-height: 1.5; }
+    .cookie-btn { background: #f7931a; color: #fff; border: none; padding: 10px 18px; border-radius: 10px; font-weight: bold; cursor: pointer; white-space: nowrap; }
+
+    footer {
+      margin-top: 30px;
+      padding: 24px 0 10px;
+      color: var(--muted-text);
+      font-size: 14px;
+      border-top: 1px solid var(--card-border);
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero.open { grid-template-columns: 1fr; }
+      .cookie-banner { flex-direction: column; align-items: stretch; }
+    }
+    @media (max-width: 640px) {
+      h1 { font-size: 28px; }
+      .time-grid { grid-template-columns: 1fr; }
+      .button-wrap { flex-direction: column; }
+      .button-wrap .action-btn { width: 100%; }
+    }
+  
+    .earnings-box {
+      background: linear-gradient(135deg, rgba(34,197,94,.10), rgba(255,255,255,.03));
+      border: 1px solid rgba(74,222,128,.25);
+      border-radius: 18px;
+      padding: 18px;
+      margin-top: 18px;
+    }
+    .earnings-big {
+      font-size: 30px;
+      font-weight: bold;
+      color: #7df0a7;
+      margin: 8px 0;
+      line-height: 1.3;
+    }
+    .share-wrap {
+      margin-top: 18px;
+    }
+    .share-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .share-btn {
+      border: 1px solid var(--card-border);
+      background: var(--stat-bg);
+      color: var(--text-color);
+      border-radius: 12px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .share-btn:hover {
+      background: var(--card-bg);
+    }
+
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">마켓 인사이트 허브</div>
+      <nav class="nav" aria-label="주요 메뉴">
+        <button type="button" onclick="toggleIntro()">사이트 소개</button>
+        <button type="button" onclick="toggleSection('guideContent')">시장 읽는 방법</button>
+        <button type="button" onclick="toggleSection('faqContent')">자주 묻는 질문</button>
+        <button type="button" onclick="toggleSection('privacyContent')">개인정보처리방침</button>
+        <button type="button" onclick="toggleSection('termsContent')">이용약관</button>
+        <!-- 테마 토글 버튼 -->
+        <button type="button" id="themeToggle" class="theme-toggle" onclick="toggleTheme()" title="테마 변경">
+          블랙 모드 🌙
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="introSection" class="hero">
+      <div class="hero-card">
+        <span class="eyebrow">교육형 시장 정보 사이트</span>
+        <h1>비트코인 · 금 · WTI를 한 곳에서 보고,<br>시장 해석 방법까지 함께 이해하는 사이트</h1>
+        <p class="muted">
+          이 사이트는 차트만 보여주는 페이지가 아니라, 사용자가 시장 정보를 더 쉽게 읽고 해석할 수 있도록
+          설명, 리스크 관리 가이드, 활용 예시를 함께 제공하는 콘텐츠형 사이트입니다.
+        </p>
+        <ul>
+          <li><strong>실시간 지표 분석:</strong> 비트코인, 금, WTI 등 핵심 자산의 실시간 차트를 즉시 제공합니다.</li>
+          <li><strong>독창적인 교육 콘텐츠:</strong> 단순 수치보다 지지와 저항 등 시장 원리를 초보자도 쉽게 이해할 수 있도록 정리했습니다.</li>
+          <li><strong>리스크 관리 중심:</strong> 모든 시장 해석은 참고용이며, 수익 보장보다 리스크 통제를 강조합니다.</li>
+          <li><strong>사용자 상호작용:</strong> 운세 알고리즘을 활용한 흥미 요소로 시장 접근성을 높였습니다.</li>
+        </ul>
+      </div>
+      <div class="hero-card">
+        <h2>이 사이트가 제공하는 핵심 가치</h2>
+        <div class="grid-2">
+          <div class="stat">
+            <strong>정확한 데이터</strong>
+            신뢰도 높은 거래소 API와 TradingView 데이터를 활용합니다.
+          </div>
+          <div class="stat">
+            <strong>전문적 해설</strong>
+            단순 정보를 넘어 시장을 보는 시야를 넓혀주는 텍스트 콘텐츠를 지향합니다.
+          </div>
+          <div class="stat">
+            <strong>사용자 경험</strong>
+            광고보다 정보의 가독성과 탐색의 편의성을 우선하여 설계되었습니다.
+          </div>
+          <div class="stat">
+            <strong>투명한 운영</strong>
+            서비스의 한계와 면책 사항을 명확히 고지하여 신뢰를 구축합니다.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="charts">
+      <h2 class="section-title">실시간 차트</h2>
+      <p class="muted">
+        분석하고자 하는 자산을 선택하세요. TradingView 위젯을 통해 전문적인 분석 도구를 무료로 이용할 수 있습니다.
+      </p>
+
+      <div class="button-wrap">
+        <button class="action-btn" id="btcBtn" onclick="toggleChart('btc')">비트코인 차트 열기</button>
+        <button class="action-btn" id="wtiBtn" onclick="toggleChart('wti')">WTI 유가 차트 열기</button>
+        <button class="action-btn" id="goldBtn" onclick="toggleChart('gold')">금 차트 열기</button>
+        <button class="action-btn" id="allChartsBtn" onclick="toggleAllCharts()" style="background: #3d495c;">모든 차트 모아보기</button>
+      </div>
+
+      <div id="chartsContainer" class="charts-container">
+        <div id="btcSection" class="chart-section">
+          <div class="chart-title">비트코인 차트 (Binance Real-time)</div>
+          <div id="btcChart" class="chart-box"></div>
+        </div>
+
+        <div id="wtiSection" class="chart-section">
+          <div class="chart-title">WTI 원유 유가 (USOIL)</div>
+          <div id="wtiChart" class="chart-box"></div>
+        </div>
+
+        <div id="goldSection" class="chart-section">
+          <div class="chart-title">국제 금 시세 (XAU/USD)</div>
+          <div id="goldChart" class="chart-box"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ad-wrap">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-2089139172723802"
+           data-ad-slot="1234567890"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </div>
+
+    <section class="toggle-section">
+      <button class="toggle-button" type="button" onclick="toggleSection('guideContent')">시장 읽는 방법 열기</button>
+      <div id="guideContent" class="toggle-content">
+        <div class="card">
+          <h2 class="section-title">성공적인 트레이딩을 위한 핵심 전략</h2>
+          <div class="grid-2">
+            <article class="info-card">
+              <h3>1. 지지와 저항의 기본 원리</h3>
+              <p>시장은 가격이 여러 번 멈추거나 반전된 자리를 기억합니다. 이를 지지와 저항이라고 합니다. 지지선은 추가 하락을 방어하는 심리적 마지노선이며, 저항선은 매도 물량이 쏟아지는 구간입니다. 이 기준을 통해 손절가를 정하는 것이 모든 분석의 기초입니다.</p>
+            </article>
+            <article class="info-card">
+              <h3>2. 리스크 관리와 분할 대응</h3>
+              <p>한 번의 거래에 모든 자산을 투입하는 것은 도박과 같습니다. 성공적인 트레이더는 자산을 분할하여 진입하고, 목표가 도달 시 단계적으로 익절하여 수익을 보존합니다. 자신의 자산 대비 손실 한도를 1~2% 내외로 통제하는 습관이 중요합니다.</p>
+            </article>
+            <article class="info-card">
+              <h3>3. 거시 경제 뉴스와의 조화</h3>
+              <p>차트는 과거의 기록이지만, 뉴스는 미래의 동력입니다. 금리 결정, 인플레이션 지표, 지정학적 리스크 등 거시 경제 요소는 가격의 추세를 결정합니다. 기술적 분석과 함께 주요 경제 캘린더를 체크하여 시장의 흐름을 다각도로 파악하세요.</p>
+            </article>
+            <article class="info-card">
+              <h3>4. 원칙 매매의 중요성</h3>
+              <p>시장의 변동성에 흔들리지 않는 자신만의 매매 원칙을 세워야 합니다. 감정에 휘둘린 뇌동매매는 손실의 지름길입니다. 본 사이트에서 제공하는 참고 구간 역시 하나의 도구일 뿐이며, 최종 판단은 객관적인 데이터와 원칙에 기반해야 합니다.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="fortune">
+      <h2 class="section-title">오늘의 비트코인 운세</h2>
+      <p class="muted">
+        개인의 사주 기운과 현재 시장 에너지를 분석하는 보조 콘텐츠입니다. (오락용 가이드)
+      </p>
+
+      <div class="form-grid">
+        <div class="input-group">
+          <label for="name">이름</label>
+          <input type="text" id="name" placeholder="이름을 입력하세요" />
+        </div>
+
+        <div class="input-group">
+          <label for="birthDate">태어난 날 (예: 1990-01-01)</label>
+          <input type="text" id="birthDate" placeholder="YYYY-MM-DD" maxlength="10" />
+        </div>
+
+        <div class="input-group">
+          <label>태어난 시간</label>
+          <div class="time-grid">
+            <select id="ampm"></select>
+            <select id="birthHour"></select>
+            <select id="birthMinute"></select>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-wrap">
+        <button class="action-btn" onclick="generateFortuneAndMarket()">오늘의 분석 결과 확인하기</button>
+      </div>
+
+      <div id="resultBox" class="result-box">
+        <div class="headline-box">
+          <div id="mainDecision" class="big-text"></div>
+          <p id="mainSummary" style="margin-top:10px;"></p>
+          <div id="todayLabel" class="source-line"></div>
+        </div>
+
+        <div id="signalBox" class="signal-box">추천 계산 중...</div>
+
+        <div class="hero-summary">
+          <div class="hero-item">
+            <h3>오늘의 핵심 에너지</h3>
+            <p id="overallEnergy"></p>
+          </div>
+          <div class="hero-item">
+            <h3>오행 조화 분석</h3>
+            <p id="elementBalance"></p>
+          </div>
+          <div class="hero-item">
+            <h3>행운의 포인트</h3>
+            <p id="luckyInfo"></p>
+          </div>
+          <div class="hero-item">
+            <h3>BTC 대응 태도</h3>
+            <p id="btcMindset"></p>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h3 class="mini-title">오늘의 참고 구간</h3>
+        <div class="recommend-grid">
+          <div class="recommend-card">
+            <h4>종합 참고 방향</h4>
+            <p id="finalRecommendText"></p>
+          </div>
+          <div class="recommend-card">
+            <h4>진입 권장 범위</h4>
+            <p id="entryRecommendText"></p>
+          </div>
+          <div class="recommend-card">
+            <h4>리스크/목표 관리</h4>
+            <p id="tpSlText"></p>
+          </div>
+          <div class="recommend-card">
+            <h4>전략 수립 배경</h4>
+            <p id="reasonText"></p>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h3 class="mini-title">운세 상세 리포트</h3>
+        <div class="detail-grid">
+          <div class="detail-card">
+            <h4>전체 흐름</h4>
+            <p id="fortuneOverall"></p>
+          </div>
+          <div class="detail-card">
+            <h4>재물 기운</h4>
+            <p id="fortuneMoney"></p>
+          </div>
+          <div class="detail-card">
+            <h4>일·활동운</h4>
+            <p id="fortuneWork"></p>
+          </div>
+          <div class="detail-card">
+            <h4>인적 네트워크</h4>
+            <p id="fortuneLove"></p>
+          </div>
+          <div class="detail-card">
+            <h4>심신 컨디션</h4>
+            <p id="fortuneHealth"></p>
+          </div>
+          <div class="detail-card">
+            <h4>오늘의 핵심 조언</h4>
+            <p id="fortuneAdvice"></p>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h3 class="mini-title">실시간 시장 지표</h3>
+        <div class="market-grid">
+          <div class="market-card">
+            <h4>BTC 실시간 시세</h4>
+            <div id="livePrice" class="price">불러오는 중...</div>
+            <div id="livePriceSub" class="source-line"></div>
+          </div>
+
+          <div class="market-card">
+            <h4>상승 시나리오 (Long)</h4>
+            <div id="longPlan"></div>
+          </div>
+
+          <div class="market-card">
+            <h4>하락 시나리오 (Short)</h4>
+            <div id="shortPlan"></div>
+          </div>
+
+          <div class="market-card">
+            <h4>주요 지지/저항 매물대</h4>
+            <div id="zoneSummary"></div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h3 class="mini-title">시장 리서치 시나리오</h3>
+        <div id="institutionList" class="institution-list"></div>
+
+
+        <div class="earnings-box">
+          <h3 class="mini-title">💰 오늘 비트코인 기대 수익 시뮬레이션</h3>
+          <p id="yearEarningsSummary" class="muted">분석 중...</p>
+          <div id="yearEarningsAmount" class="earnings-big">-</div>
+          <p id="yearEarningsDetail">위 수치는 사용자의 고유 에너지 지수를 시장 변동성과 결합한 가상의 결과입니다.</p>
+
+          <div class="share-wrap">
+            <h3 class="mini-title">결과 공유하기</h3>
+            <div class="share-buttons">
+              <button type="button" class="share-btn" onclick="shareResult('kakao')">카카오톡</button>
+              <button type="button" class="share-btn" onclick="shareResult('telegram')">텔레그램</button>
+              <button type="button" class="share-btn" onclick="copyResultText()">분석 리포트 복사</button>
+            </div>
+          </div>
+        </div>
+<div class="foot-note">
+  ※ 주의: 본 분석은 참고용이며 금융 상품에 대한 투자 권유가 아닙니다.
+</div>
+</div>
+</section>
+
+<!-- 운세와 FAQ 사이 광고 추가 -->
+<div class="ad-wrap">
+<ins class="adsbygoogle"
+   style="display:block"
+   data-ad-client="ca-pub-2089139172723802"
+   data-ad-slot="1234567890"
+   data-ad-format="auto"
+   data-full-width-responsive="true"></ins>
+</div>
+
+<div class="ad-wrap">
+<ins class="adsbygoogle"
+   style="display:block"
+   data-ad-client="ca-pub-2089139172723802"
+   data-ad-slot="1234567890"
+   data-ad-format="auto"
+   data-full-width-responsive="true"></ins>
+</div>
+
+    <section class="toggle-section">
+      <button class="toggle-button" type="button" onclick="toggleSection('faqContent')">자주 묻는 질문 열기</button>
+      <div id="faqContent" class="toggle-content">
+        <div class="faq-card">
+          <h2 class="section-title">자주 묻는 질문 (FAQ)</h2>
+          <div class="faq-list">
+            <div class="faq-item">
+              <h3>제공되는 가격 구간은 신뢰할 수 있나요?</h3>
+              <p>본 사이트에서 제공하는 가격 구간은 과거의 데이터와 기술적 지표를 바탕으로 한 알고리즘 분석 결과입니다. 시장 상황은 실시간으로 급변할 수 있으므로, 최종 판단은 본인의 책임하에 진행해야 합니다.</p>
+            </div>
+            <div class="faq-item">
+              <h3>운세 분석의 과학적 근거는 무엇인가요?</h3>
+              <p>본 사이트의 운세 기능은 전통 명리학의 오행 분석법을 투자 심리 상태와 결합한 알고리즘을 사용합니다. 과학적 증명보다는 투자 과정에서의 흥미 유발과 마인드 컨트롤을 돕는 보조 도구로 이해해 주시기 바랍니다.</p>
+            </div>
+            <div class="faq-item">
+              <h3>광고가 표시되는 이유는 무엇인가요?</h3>
+              <p>마켓 인사이트 허브는 사용자에게 무료로 전문적인 차트 분석과 가이드를 제공하기 위해 최소한의 광고를 게재하고 있습니다. 이를 통해 얻은 수익은 서비스 유지 및 서버 운영비로 사용됩니다.</p>
+            </div>
+            <div class="faq-item">
+              <h3>개인정보는 안전하게 보호되나요?</h3>
+              <p>사용자가 입력하는 이름, 생년월일 등의 분석용 데이터는 서버에 저장되지 않고 브라우저 세션 내에서만 일시적으로 사용된 후 파기됩니다. 자세한 내용은 개인정보처리방침을 확인해 주세요.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="toggle-section">
+      <button class="toggle-button" type="button" onclick="toggleSection('privacyContent')">개인정보처리방침 열기</button>
+      <div id="privacyContent" class="toggle-content">
+        <div class="policy-card">
+          <h2>개인정보처리방침</h2>
+          <p class="muted">최종 업데이트: 2026-03-29</p>
+          <div class="notice-box">
+            마켓 인사이트 허브는 방문자의 개인정보를 소중히 여기며, 관련 법령을 준수합니다.
+          </div>
+
+          <h3>1. 개인정보 처리 목적</h3>
+          <p>본 사이트는 비트코인 및 금융 시장 관련 정보 제공과 교육 콘텐츠 서비스를 목적으로 운영됩니다. 수집된 정보는 서비스 제공 이외의 목적으로는 사용되지 않습니다.</p>
+
+          <h3>2. 처리하는 개인정보 항목</h3>
+          <ul>
+            <li>운세 분석 서비스 이용 시 입력하는 성명, 생년월일, 성별, 출생 시간 (서버에 저장되지 않음)</li>
+            <li>브라우저 정보, 접속 IP 정보, 쿠키 정보 (서비스 품질 개선 및 광고 분석용)</li>
+          </ul>
+
+          <h3>3. 쿠키 및 제3자 서비스 이용</h3>
+          <p>본 사이트는 구글 애드센스(Google AdSense) 광고 서비스를 이용하며, 방문자의 관심사에 기반한 광고를 제공하기 위해 쿠키를 사용합니다. 사용자는 브라우저 설정에서 쿠키 거부를 할 수 있습니다.</p>
+
+          <h3>4. 개인정보의 보유 및 이용 기간</h3>
+          <p>사용자가 입력한 분석 데이터는 저장되지 않으며, 기타 로그 정보는 관련 법령 및 광고 플랫폼 정책에 따라 보존됩니다.</p>
+
+          <h3>5. 문의처</h3>
+          <p>문의사항은 아래 메일로 연락해 주시기 바랍니다.<br><strong>dhwnr9@gmail.com</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="toggle-section">
+      <button class="toggle-button" type="button" onclick="toggleSection('termsContent')">이용약관 열기</button>
+      <div id="termsContent" class="toggle-content">
+        <div class="policy-card">
+          <h2>이용약관</h2>
+          <p class="muted">최종 업데이트: 2026-03-29</p>
+          <h3>제1조 (목적)</h3>
+          <p>본 약관은 마켓 인사이트 허브가 제공하는 서비스의 이용 조건 및 절차에 관한 사항을 규정합니다.</p>
+          <h3>제2조 (책임의 한계)</h3>
+          <p>본 사이트의 모든 정보는 참고용이며 투자 권유가 아닙니다. 시장 데이터의 지연이나 오류로 인해 발생한 손실에 대해 운영자는 책임을 지지 않습니다. 투자의 결정권과 책임은 전적으로 사용자 본인에게 있습니다.</p>
+          <h3>제3조 (서비스 변경)</h3>
+          <p>운영자는 필요한 경우 서비스의 내용을 사전 고지 없이 변경하거나 중단할 수 있습니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© 2026 마켓 인사이트 허브. All rights reserved. | Contact: dhwnr9@gmail.com</div>
+    </footer>
+  </main>
+
+  <div id="cookieBanner" class="cookie-banner">
+    <p>본 사이트는 구글 애드센스 광고 서비스 제공을 위해 쿠키를 사용합니다. 계속 이용함으로써 쿠키 사용에 동의하게 됩니다.</p>
+    <button class="cookie-btn" onclick="acceptCookies()">동의 및 닫기</button>
+  </div>
+
+  <script src="https://s3.tradingview.com/tv.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+  <script>
+    let sortableInstance = null;
+    function acceptCookies() {
+      document.getElementById("cookieBanner").style.display = "none";
+      localStorage.setItem("cookiesAccepted", "true");
+    }
+
+    window.addEventListener("load", function () {
+      if (!localStorage.getItem("cookiesAccepted")) {
+        document.getElementById("cookieBanner").style.display = "flex";
+      }
+      const ads = document.querySelectorAll(".adsbygoogle");
+      ads.forEach(() => {
+        try {
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (e) {
+          console.warn("AdSense init skipped:", e);
+        }
+      });
+    });
+
+    const chartState = {
+      btc: { loaded: false, visible: false },
+      wti: { loaded: false, visible: false },
+      gold: { loaded: false, visible: false }
+    };
+
+    const chartConfig = {
+      btc: {
+        buttonId: "btcBtn",
+        sectionId: "btcSection",
+        containerId: "btcChart",
+        symbol: "BINANCE:BTCUSDT",
+        openText: "비트코인 차트 열기",
+        closeText: "비트코인 차트 닫기"
+      },
+      wti: {
+        buttonId: "wtiBtn",
+        sectionId: "wtiSection",
+        containerId: "wtiChart",
+        symbol: "TVC:USOIL",
+        openText: "WTI 유가 차트 열기",
+        closeText: "WTI 유가 차트 닫기"
+      },
+      gold: {
+        buttonId: "goldBtn",
+        sectionId: "goldSection",
+        containerId: "goldChart",
+        symbol: "TVC:GOLD",
+        openText: "금 차트 열기",
+        closeText: "금 차트 닫기"
+      }
+    };
+
+    const MARKET_SNAPSHOT = {
+      updated: "manual",
+      majorSupportLow: 65000,
+      majorSupportHigh: 68000,
+      pivotSupport: 70900,
+      resistance: 74000,
+      optionsMagnet: 75000
+    };
+
+    const INSTITUTIONAL_OUTLOOKS = [
+      {
+        name: "글로벌 분석 시나리오 A",
+        target: "$100,000",
+        memo: "강한 매수세 유입 시 심리적 저항선을 돌파하는 시나리오입니다."
+      },
+      {
+        name: "글로벌 분석 시나리오 B",
+        target: "$85,000",
+        memo: "중기 조정 후 추세를 형성하며 지지를 확인하는 구간입니다."
+      },
+      {
+        name: "단기 기술적 분석 C",
+        target: "$74,000 ~ $75,000",
+        memo: "단기 매물대 소화 과정에서 출현할 수 있는 저항 구간입니다."
+      }
+    ];
+
+    function toggleIntro() {
+      const intro = document.getElementById("introSection");
+      intro.classList.toggle("open");
+      if (intro.classList.contains("open")) {
+        intro.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    function toggleSection(id) {
+      const el = document.getElementById(id);
+      el.classList.toggle("open");
+      if (el.classList.contains("open")) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    function createChart(symbol, containerId) {
+      new TradingView.widget({
+        width: "100%",
+        height: 700,
+        symbol: symbol,
+        interval: "15",
+        timezone: "Asia/Seoul",
+        theme: "dark",
+        style: "1",
+        locale: "kr",
+        toolbar_bg: "#171b22",
+        enable_publishing: false,
+        hide_top_toolbar: false,
+        hide_legend: false,
+        save_image: true,
+        container_id: containerId
+      });
+    }
+
+    function toggleChart(type) {
+      const config = chartConfig[type];
+      const state = chartState[type];
+      const section = document.getElementById(config.sectionId);
+      const button = document.getElementById(config.buttonId);
+      const container = document.getElementById('chartsContainer');
+
+      // 모아보기 모드일 때는 개별 토글 비활성화 (또는 모아보기 해제)
+      if (container.classList.contains('grid-view')) {
+        toggleAllCharts(); // 모아보기 해제 후 진행
+      }
+
+      if (!state.visible) {
+        section.classList.add("active");
+        button.textContent = config.closeText;
+
+        if (!state.loaded) {
+          createChart(config.symbol, config.containerId);
+          state.loaded = true;
+        }
+        state.visible = true;
+      } else {
+        section.classList.remove("active");
+        button.textContent = config.openText;
+        state.visible = false;
+      }
+    }
+
+    function toggleAllCharts() {
+      const container = document.getElementById('chartsContainer');
+      const btn = document.getElementById('allChartsBtn');
+      const isGridView = container.classList.toggle('grid-view');
+      
+      btn.textContent = isGridView ? "개별 차트 보기" : "모든 차트 모아보기";
+      btn.style.background = isGridView ? "#f7931a" : "#3d495c";
+
+      if (isGridView) {
+        // 드래그 앤 드롭 활성화
+        sortableInstance = new Sortable(container, {
+          animation: 150,
+          ghostClass: 'sortable-ghost',
+          onEnd: function() {
+            console.log('차트 위치 변경됨');
+          }
+        });
+      } else {
+        // 드래그 앤 드롭 비활성화
+        if (sortableInstance) {
+          sortableInstance.destroy();
+          sortableInstance = null;
+        }
+      }
+
+      const types = ['btc', 'wti', 'gold'];
+      types.forEach(type => {
+        const config = chartConfig[type];
+        const state = chartState[type];
+        const section = document.getElementById(config.sectionId);
+        const button = document.getElementById(config.buttonId);
+
+        if (isGridView) {
+          section.classList.add('active');
+          button.textContent = config.closeText;
+          if (!state.loaded) {
+            createChart(config.symbol, config.containerId);
+            state.loaded = true;
+          }
+          state.visible = true;
+        } else {
+          // 모아보기 해제 시 모든 차트 닫기
+          section.classList.remove('active');
+          button.textContent = config.openText;
+          state.visible = false;
+        }
+      });
+
+      if (isGridView) {
+        container.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    function initTimeSelects() {
+      const ampm = document.getElementById("ampm");
+      const hour = document.getElementById("birthHour");
+      const minute = document.getElementById("birthMinute");
+
+      ampm.innerHTML = `
+        <option value="UNKNOWN">모름</option>
+        <option value="AM">오전</option>
+        <option value="PM">오후</option>
+      `;
+
+      hour.innerHTML = `<option value="00">시</option>`;
+      minute.innerHTML = `<option value="00">분</option>`;
+
+      for (let h = 1; h <= 12; h++) {
+        const hh = String(h).padStart(2, "0");
+        const opt = document.createElement("option");
+        opt.value = hh;
+        opt.textContent = `${hh}시`;
+        hour.appendChild(opt);
+      }
+
+      for (let m = 0; m <= 59; m++) {
+        const mm = String(m).padStart(2, "0");
+        const opt = document.createElement("option");
+        opt.value = mm;
+        opt.textContent = `${mm}분`;
+        minute.appendChild(opt);
+      }
+    }
+
+    function convertNameToNumber(name) {
+      let total = 0;
+      for (let i = 0; i < name.length; i++) total += name.charCodeAt(i);
+      return total;
+    }
+
+    function get24Hour(ampm, hour12) {
+      let h = Number(hour12);
+      if (ampm === "UNKNOWN") return 12;
+      if (ampm === "AM") return h === 12 ? 0 : h;
+      return h === 12 ? 12 : h + 12;
+    }
+
+    function getZodiac(year) {
+      const animals = ["원숭이","닭","개","돼지","쥐","소","호랑이","토끼","용","뱀","말","양"];
+      return animals[year % 12];
+    }
+
+    function getElementByYear(year) {
+      const elements = ["금","수","목","화","토"];
+      return elements[year % 5];
+    }
+
+    function getElementByHour(hour24) {
+      if (hour24 >= 23 || hour24 < 3) return "수";
+      if (hour24 < 7) return "목";
+      if (hour24 < 11) return "화";
+      if (hour24 < 15) return "토";
+      if (hour24 < 19) return "금";
+      return "수";
+    }
+
+    function getTodayElement(date) {
+      const elements = ["목","화","토","금","수"];
+      return elements[date.getDay() % 5];
+    }
+
+    function buildDetailedFortune({ name, birthDate, birthHour24, birthMinute, timeUnknown }) {
+      const today = new Date();
+      const [y, m, d] = birthDate.split("-").map(Number);
+      const zodiac = getZodiac(y);
+      const baseElement = getElementByYear(y);
+      const hourElement = timeUnknown ? "중립" : getElementByHour(birthHour24);
+      const todayElement = getTodayElement(today);
+      const nameNum = convertNameToNumber(name);
+
+      const seed =
+        (y * 17) + (m * 23) + (d * 31) +
+        (birthHour24 * 19) + (birthMinute * 13) +
+        (today.getFullYear() * 7) + ((today.getMonth() + 1) * 11) +
+        (today.getDate() * 29) + (nameNum * 3);
+
+      const score = ((seed % 101) + 101) % 101;
+
+      let direction = "관망";
+      let cssTone = "mid";
+
+      if (score >= 70) {
+        direction = "상승(Long) 우세";
+        cssTone = "good";
+      } else if (score < 45) {
+        direction = "하락(Short) 우세";
+        cssTone = "bad";
+      }
+
+      const luckyColors = { 목: "초록, 민트", 화: "주황, 레드", 토: "베이지, 골드", 금: "화이트, 실버", 수: "블루, 네이비", 중립: "화이트, 그레이" };
+      const luckyNumbers = { 목: "3, 8", 화: "2, 7", 토: "5, 9", 금: "4, 6", 수: "1, 0", 중립: "5" };
+
+      return {
+        score, direction, cssTone, zodiac, baseElement, hourElement, todayElement,
+        luckyColor: luckyColors[timeUnknown ? "중립" : todayElement],
+        luckyNumber: luckyNumbers[timeUnknown ? "중립" : todayElement],
+        elementComment: timeUnknown
+          ? `시간 정보 미입력으로 중심 기운(${baseElement})과 오늘 흐름(${todayElement})을 집중 분석했습니다.`
+          : `타고난 중심 기운은 ${baseElement}, 시간 기운은 ${hourElement}, 오늘 흐름은 ${todayElement}입니다.`,
+        overall: score >= 70
+          ? "오늘은 긍정적인 시장 에너지가 강한 날입니다. 원칙 내에서 적극적인 기회를 모색해 보세요."
+          : score < 45
+          ? "보수적인 태도가 요구되는 날입니다. 성급한 판단보다는 지지선을 확인하는 전략이 필요합니다."
+          : "방향성이 모호한 구간입니다. 무리한 진입보다는 관망하며 흐름을 파악하는 것이 좋습니다.",
+        money: score >= 70
+          ? "자산 증식의 기운이 있습니다. 분할 매수를 통한 안정적인 접근을 추천합니다."
+          : score < 45
+          ? "손실 방어가 최우선입니다. 원칙 없는 매매는 피하고 리스크를 줄이세요."
+          : "금전적 평형을 유지하는 시기입니다. 손익비가 좋은 구간을 기다리세요.",
+        work: "자신의 분석력을 믿고 원칙대로 진행할 때 성과가 따릅니다.",
+        love: "주변의 다양한 정보 중 가치 있는 것을 가려내는 지혜가 필요합니다.",
+        health: "명확한 판단을 위해 충분한 휴식과 안정을 취하세요.",
+        advice: score >= 70
+          ? "강세 관점이 유리하지만, 추격 매수보다는 눌림목을 활용하세요."
+          : score < 45
+          ? "하락 압력에 대비하여 지지선 이탈 여부를 꼼꼼히 체크하세요."
+          : "쉬는 것도 투자의 일부입니다. 시장의 다음 신호를 기다리세요."
+      };
+    }
+
+    async function fetchBTCPrice() {
+      try {
+        const res = await fetch("https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT");
+        const data = await res.json();
+        return Number(data.price);
+      } catch (e) {
+        return 70000;
+      }
+    }
+
+    function formatPrice(value) {
+      return "$" + Number(value).toLocaleString("en-US", { maximumFractionDigits: 0 });
+    }
+
+    function buildTradePlan(livePrice, fortuneScore) {
+      const s = MARKET_SNAPSHOT;
+      const longEntry = Math.round(livePrice * 0.985);
+      const longStop = Math.round(s.majorSupportLow - 500);
+      const shortEntry = Math.round(s.resistance);
+      const shortStop = Math.round(s.optionsMagnet + 700);
+
+      let signal = "관망";
+      let signalClass = "signal-wait";
+      let finalRecommendText = "";
+      let entryRecommendText = "";
+      let tpSlText = "";
+      let reasonText = "";
+
+      if (fortuneScore >= 70) {
+        signal = "강세(Long) 유망";
+        signalClass = "signal-long";
+        finalRecommendText = `오늘의 투자 기운이 매우 긍정적입니다. 강세 시나리오를 우선 검토해 보세요.`;
+        entryRecommendText = `1차 참고가: ${formatPrice(longEntry)} 부근 눌림 확인`;
+        tpSlText = `손절: ${formatPrice(longStop)} / 목표: ${formatPrice(s.pivotSupport)}`;
+        reasonText = `사용자의 긍정적 기운과 시장의 지지력이 결합된 구간이기 때문입니다.`;
+      } else if (fortuneScore < 45) {
+        signal = "약세(Short) 주의";
+        signalClass = "signal-short";
+        finalRecommendText = `방어적인 대응이 필요한 날입니다. 반등 시 저항 돌파 여부를 확인하세요.`;
+        entryRecommendText = `1차 참고가: ${formatPrice(shortEntry)} 부근 저항 확인`;
+        tpSlText = `손절: ${formatPrice(shortStop)} / 목표: ${formatPrice(s.majorSupportHigh)}`;
+        reasonText = `에너지 흐름이 하락 쪽에 민감하게 반응할 수 있는 상태이기 때문입니다.`;
+      } else {
+        signal = "중립(Neutral) 대기";
+        signalClass = "signal-wait";
+        finalRecommendText = `무리한 판단보다는 시장의 명확한 신호를 기다리는 전략이 유효합니다.`;
+        entryRecommendText = `박스권 매매: ${formatPrice(s.majorSupportHigh)} ~ ${formatPrice(s.resistance)}`;
+        tpSlText = `짧은 손절과 짧은 익절로 대응하며 큰 변동성에 유의하세요.`;
+        reasonText = `에너지가 응축되는 구간으로, 방향성 결정 전까지 기다림이 필요한 때입니다.`;
+      }
+
+      return {
+        signal, signalClass, finalRecommendText, entryRecommendText, tpSlText, reasonText,
+        longPlanHTML: `<p><span class="zone zone-long">참고 진입: ${formatPrice(longEntry)}</span> <span class="zone zone-long">리스크: ${formatPrice(longStop)}</span></p>`,
+        shortPlanHTML: `<p><span class="zone zone-short">참고 진입: ${formatPrice(shortEntry)}</span> <span class="zone zone-short">리스크: ${formatPrice(shortStop)}</span></p>`,
+        zoneSummaryHTML: `<p><span class="zone zone-neutral">핵심지지: ${formatPrice(s.majorSupportLow)}</span> <span class="zone zone-neutral">주요저항: ${formatPrice(s.resistance)}</span></p>`
+      };
+    }
+
+    function renderInstitutions() {
+      const wrap = document.getElementById("institutionList");
+      wrap.innerHTML = "";
+      INSTITUTIONAL_OUTLOOKS.forEach(item => {
+        const el = document.createElement("div");
+        el.className = "institution-card";
+        el.innerHTML = `<h4>${item.name}</h4><div class="price">${item.target}</div><p>${item.memo}</p>`;
+        wrap.appendChild(el);
+      });
+    }
+
+    async function generateFortuneAndMarket() {
+      const name = document.getElementById("name").value.trim();
+      let birthDate = document.getElementById("birthDate").value;
+
+      // YYYYMMDD -> YYYY-MM-DD
+      if (birthDate.length === 8 && !birthDate.includes("-")) {
+        birthDate = birthDate.replace(/^(\d{4})(\d{2})(\d{2})$/, "$1-$2-$3");
+        document.getElementById("birthDate").value = birthDate;
+      }
+
+      const ampm = document.getElementById("ampm").value;
+      const birthHour12 = document.getElementById("birthHour").value;
+      const birthMinute = document.getElementById("birthMinute").value;
+
+      if (!name || !birthDate || !birthDate.includes("-")) {
+        alert("이름과 태어난 날(YYYY-MM-DD)을 정확히 입력해 주세요.");
+        return;
+      }
+
+      const timeUnknown = ampm === "UNKNOWN" || birthHour12 === "00";
+      const birthHour24 = get24Hour(ampm, birthHour12);
+      const f = buildDetailedFortune({ 
+        name, 
+        birthDate, 
+        birthHour24, 
+        birthMinute: Number(birthMinute) || 0, 
+        timeUnknown 
+      });
+
+      let livePrice = await fetchBTCPrice();
+      const tradePlan = buildTradePlan(livePrice, f.score);
+
+      document.getElementById("mainDecision").className = `big-text ${f.cssTone}`;
+      document.getElementById("mainDecision").innerText = `${name}님의 오늘 흐름: ${f.direction}`;
+      document.getElementById("mainSummary").innerText = timeUnknown
+        ? `띠는 ${f.zodiac}, 중심 기운은 ${f.baseElement}, 시간은 모름으로 처리했습니다. 이 결과는 교육·오락 목적의 참고용 해석입니다.`
+        : `띠는 ${f.zodiac}, 중심 기운은 ${f.baseElement}, 시간 기운은 ${f.hourElement}, 오늘 흐름은 ${f.todayElement}입니다. 이 결과는 교육·오락 목적의 참고용 해석입니다.`;
+      
+      document.getElementById("todayLabel").innerText = `분석 기준일: ${new Date().toLocaleDateString()}`;
+      document.getElementById("signalBox").className = `signal-box ${tradePlan.signalClass}`;
+      document.getElementById("signalBox").innerText = tradePlan.signal;
+      
+      document.getElementById("overallEnergy").innerText = f.overall;
+      document.getElementById("elementBalance").innerText = f.elementComment;
+      document.getElementById("luckyInfo").innerText = `행운색상: ${f.luckyColor} / 행운숫자: ${f.luckyNumber}`;
+      document.getElementById("btcMindset").innerText = f.advice;
+
+      document.getElementById("finalRecommendText").innerText = tradePlan.finalRecommendText;
+      document.getElementById("entryRecommendText").innerText = tradePlan.entryRecommendText;
+      document.getElementById("tpSlText").innerText = tradePlan.tpSlText;
+      document.getElementById("reasonText").innerText = tradePlan.reasonText;
+
+      document.getElementById("fortuneOverall").innerText = f.overall;
+      document.getElementById("fortuneMoney").innerText = f.money;
+      document.getElementById("fortuneWork").innerText = f.work;
+      document.getElementById("fortuneLove").innerText = f.love;
+      document.getElementById("fortuneHealth").innerText = f.health;
+      document.getElementById("fortuneAdvice").innerText = f.advice;
+
+      document.getElementById("livePrice").innerText = formatPrice(livePrice);
+      document.getElementById("livePriceSub").innerText = "Binance API 기반 실시간 시세";
+      document.getElementById("longPlan").innerHTML = tradePlan.longPlanHTML;
+      document.getElementById("shortPlan").innerHTML = tradePlan.shortPlanHTML;
+      document.getElementById("zoneSummary").innerHTML = tradePlan.zoneSummaryHTML;
+
+      const earningsAmount = Math.round(f.score * 15.5);
+      document.getElementById("yearEarningsSummary").innerText = `${name}님의 기운으로 시뮬레이션한 오늘 하루 기대 수익은 다음과 같습니다.`;
+      document.getElementById("yearEarningsAmount").innerText = formatPrice(earningsAmount);
+
+      renderInstitutions();
+      document.getElementById("resultBox").style.display = "block";
+      document.getElementById("resultBox").scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function copyResultText() {
+      const text = document.getElementById("mainDecision").innerText + "\n" + document.getElementById("mainSummary").innerText;
+      navigator.clipboard.writeText(text).then(() => alert("리포트 요약이 복사되었습니다."));
+    }
+
+    function shareResult(p) {
+      alert(p + " 공유 기능을 준비 중입니다. 현재는 결과 복사를 이용해 주세요.");
+    }
+
+    // 테마 전환 기능
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const targetTheme = currentTheme === 'light' ? 'dark' : 'light';
+      
+      document.documentElement.setAttribute('data-theme', targetTheme);
+      localStorage.setItem('theme', targetTheme);
+      updateThemeToggleIcon(targetTheme);
+    }
+
+    function updateThemeToggleIcon(theme) {
+      const btn = document.getElementById('themeToggle');
+      if (btn) {
+        btn.innerHTML = theme === 'light' ? '블랙 모드 🌙' : '화이트 모드 ☀️';
+      }
+    }
+
+    // 초기 테마 설정
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      const initialTheme = savedTheme || systemTheme;
+      
+      document.documentElement.setAttribute('data-theme', initialTheme);
+      updateThemeToggleIcon(initialTheme);
+    }
+
+    initTimeSelects();
+    initTheme();
+  </script>
+</body>
+</html>
