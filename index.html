@@ -234,6 +234,15 @@
     .grid-view .chart-box {
       height: 450px;
     }
+    @media (max-width: 768px) {
+      .charts-container.grid-view {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+      .grid-view .chart-box {
+        height: 320px;
+      }
+    }
 
     /* 드래그 앤 드롭 스타일 */
     .grid-view .chart-section {
@@ -1320,13 +1329,16 @@
 
     async function generateFortuneAndMarket() {
       const name = document.getElementById("name").value.trim();
-      const birthDate = document.getElementById("birthDate").value;
-      const ampm = document.getElementById("ampm").value;
-      const birthHour12 = document.getElementById("birthHour").value;
-      const birthMinute = document.getElementById("birthMinute").value;
+      let birthDate = document.getElementById("birthDate").value;
 
-      if (!name || !birthDate) {
-        alert("이름과 태어난 날을 입력해 주세요.");
+      // YYYYMMDD -> YYYY-MM-DD (모바일 직접 입력 대응)
+      if (birthDate.length === 8 && !birthDate.includes("-")) {
+        birthDate = birthDate.replace(/^(\d{4})(\d{2})(\d{2})$/, "$1-$2-$3");
+        document.getElementById("birthDate").value = birthDate;
+      }
+
+      if (!name || !birthDate || !birthDate.includes("-")) {
+        alert("이름과 태어난 날(YYYY-MM-DD)을 정확히 입력해 주세요.");
         return;
       }
 
@@ -1411,6 +1423,23 @@
       }
     }
 
+    // 모바일 전용 날짜 입력 변경 (직접 타이핑 가능하도록)
+    function initMobileDateInput() {
+      // 모바일 기기 여부 또는 화면 너비 기준 (768px 이하)
+      if (/Mobi|Android|iPhone/i.test(navigator.userAgent) || window.innerWidth <= 768) {
+        const bd = document.getElementById('birthDate');
+        if (bd && bd.type === 'date') {
+          bd.type = 'text';
+          bd.placeholder = 'YYYY-MM-DD';
+          bd.maxLength = 10;
+          const label = bd.previousElementSibling;
+          if (label && label.tagName === 'LABEL') {
+            label.textContent += ' (예: 1990-01-01)';
+          }
+        }
+      }
+    }
+
     // 초기 테마 설정
     function initTheme() {
       const savedTheme = localStorage.getItem('theme');
@@ -1423,6 +1452,7 @@
 
     initTimeSelects();
     initTheme();
+    initMobileDateInput();
   </script>
 </body>
 </html>
