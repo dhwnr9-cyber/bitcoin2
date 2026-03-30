@@ -594,16 +594,6 @@
           <div id="btcChart" class="chart-box"></div>
         </div>
 
-        <div id="nasdaqSection" class="chart-section">
-          <div class="chart-title">나스닥 100 지수 (NASDAQ:IXIC)</div>
-          <div id="nasdaqChart" class="chart-box"></div>
-        </div>
-
-        <div id="snpSection" class="chart-section">
-          <div class="chart-title">S&P 500 지수 (SP:SPX)</div>
-          <div id="snpChart" class="chart-box"></div>
-        </div>
-
         <div id="wtiSection" class="chart-section">
           <div class="chart-title">WTI 원유 유가 (USOIL)</div>
           <div id="wtiChart" class="chart-box"></div>
@@ -942,8 +932,6 @@
 
     const chartState = {
       btc: { loaded: false, visible: false },
-      nasdaq: { loaded: false, visible: false },
-      snp: { loaded: false, visible: false },
       wti: { loaded: false, visible: false },
       gold: { loaded: false, visible: false }
     };
@@ -956,22 +944,6 @@
         symbol: "BINANCE:BTCUSDT",
         openText: "비트코인 차트 열기",
         closeText: "비트코인 차트 닫기"
-      },
-      nasdaq: {
-        buttonId: "nasdaqBtn",
-        sectionId: "nasdaqSection",
-        containerId: "nasdaqChart",
-        symbol: "NASDAQ:IXIC",
-        openText: "나스닥 지수 열기",
-        closeText: "나스닥 지수 닫기"
-      },
-      snp: {
-        buttonId: "snpBtn",
-        sectionId: "snpSection",
-        containerId: "snpChart",
-        symbol: "SP:SPX",
-        openText: "S&P 500 열기",
-        closeText: "S&P 500 닫기"
       },
       wti: {
         buttonId: "wtiBtn",
@@ -1089,7 +1061,7 @@
       btn.textContent = isGridView ? "개별 차트 보기" : "모든 차트 모아보기";
       btn.style.background = isGridView ? "#f7931a" : "#3d495c";
 
-      const types = ['btc', 'nasdaq', 'snp', 'wti', 'gold'];
+      const types = ['btc', 'wti', 'gold'];
       types.forEach(type => {
         const config = chartConfig[type];
         const state = chartState[type];
