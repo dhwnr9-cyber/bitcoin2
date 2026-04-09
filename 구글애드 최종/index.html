@@ -546,6 +546,7 @@
       <div class="logo">마켓 인사이트 허브</div>
       <nav class="nav" aria-label="주요 메뉴">
         <button type="button" onclick="toggleIntro()">사이트 소개</button>
+        <button type="button" onclick="toggleSection('glossaryContent')">시장 핵심 용어 사전</button>
         <button type="button" onclick="toggleSection('guideContent')">시장 읽는 방법</button>
         <button type="button" onclick="toggleSection('faqContent')">자주 묻는 질문</button>
         <button type="button" onclick="toggleSection('privacyContent')">개인정보처리방침</button>
@@ -596,34 +597,39 @@
       </div>
     </section>
 
-    <section class="card" id="glossary">
-      <h2 class="section-title">시장 핵심 용어 사전</h2>
-      <p class="muted">성공적인 투자를 위해 반드시 알아야 할 경제 및 기술적 분석 핵심 용어입니다.</p>
-      <div class="grid-3">
-        <article class="info-card">
-          <h3>FOMC (연방공개시장위원회)</h3>
-          <p>미국의 통화 정책을 결정하는 기구로, 금리 결정을 통해 전 세계 자산 시장의 유동성에 직접적인 영향을 미칩니다. 금리 인상은 대개 자산 가격의 하방 압력으로 작용합니다.</p>
-        </article>
-        <article class="info-card">
-          <h3>CPI (소비자물가지수)</h3>
-          <p>인플레이션을 측정하는 대표적인 지표입니다. 물가 상승률이 예상보다 높으면 중앙은행의 긴축 정책 가능성이 커지며, 이는 시장 변동성을 확대하는 요인이 됩니다.</p>
-        </article>
-        <article class="info-card">
-          <h3>반감기 (Halving)</h3>
-          <p>비트코인 채굴 보상이 절반으로 줄어드는 시기로, 약 4년마다 발생합니다. 공급량이 감소함에 따라 희소성이 높아져 역사적으로 가격 상승의 모멘텀이 되어왔습니다.</p>
-        </article>
-        <article class="info-card">
-          <h3>데드캣 바운스</h3>
-          <p>급락장 속에서 일시적으로 주가가 반등하는 현상을 말합니다. 진정한 추세 전환이 아닌 일시적 반등일 확률이 높으므로 신중한 접근이 필요합니다.</p>
-        </article>
-        <article class="info-card">
-          <h3>RSI (상대강도지수)</h3>
-          <p>가격의 상승 압력과 하락 압력 간의 상대적인 강도를 나타내는 보조지표입니다. 보통 70 이상은 과매수, 30 이하는 과매도 구간으로 해석합니다.</p>
-        </article>
-        <article class="info-card">
-          <h3>WTI (서부 텍사스산 원유)</h3>
-          <p>국제 유가의 기준이 되는 지표 중 하나로, 실물 경제의 활력도를 나타냅니다. 유가 변동은 물가와 물류비용에 영향을 주어 증시와 암호화폐 시장에 간접적 영향을 미칩니다.</p>
-        </article>
+    <section class="toggle-section">
+      <button class="toggle-button" type="button" onclick="toggleSection('glossaryContent')">시장 핵심 용어 사전 열기</button>
+      <div id="glossaryContent" class="toggle-content">
+        <div class="card" id="glossary">
+          <h2 class="section-title">시장 핵심 용어 사전</h2>
+          <p class="muted">성공적인 투자를 위해 반드시 알아야 할 경제 및 기술적 분석 핵심 용어입니다.</p>
+          <div class="grid-3">
+            <article class="info-card">
+              <h3>FOMC (연방공개시장위원회)</h3>
+              <p>미국의 통화 정책을 결정하는 기구로, 금리 결정을 통해 전 세계 자산 시장의 유동성에 직접적인 영향을 미칩니다. 금리 인상은 대개 자산 가격의 하방 압력으로 작용합니다.</p>
+            </article>
+            <article class="info-card">
+              <h3>CPI (소비자물가지수)</h3>
+              <p>인플레이션을 측정하는 대표적인 지표입니다. 물가 상승률이 예상보다 높으면 중앙은행의 긴축 정책 가능성이 커지며, 이는 시장 변동성을 확대하는 요인이 됩니다.</p>
+            </article>
+            <article class="info-card">
+              <h3>반감기 (Halving)</h3>
+              <p>비트코인 채굴 보상이 절반으로 줄어드는 시기로, 약 4년마다 발생합니다. 공급량이 감소함에 따라 희소성이 높아져 역사적으로 가격 상승의 모멘텀이 되어왔습니다.</p>
+            </article>
+            <article class="info-card">
+              <h3>데드캣 바운스</h3>
+              <p>급락장 속에서 일시적으로 주가가 반등하는 현상을 말합니다. 진정한 추세 전환이 아닌 일시적 반등일 확률이 높으므로 신중한 접근이 필요합니다.</p>
+            </article>
+            <article class="info-card">
+              <h3>RSI (상대강도지수)</h3>
+              <p>가격의 상승 압력과 하락 압력 간의 상대적인 강도를 나타내는 보조지표입니다. 보통 70 이상은 과매수, 30 이하는 과매도 구간으로 해석합니다.</p>
+            </article>
+            <article class="info-card">
+              <h3>WTI (서부 텍사스산 원유)</h3>
+              <p>국제 유가의 기준이 되는 지표 중 하나로, 실물 경제의 활력도를 나타냅니다. 유가 변동은 물가와 물류비용에 영향을 주어 증시와 암호화폐 시장에 간접적 영향을 미칩니다.</p>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1278,7 +1284,7 @@
           : "금전적 평형을 유지하는 시기입니다. 손익비가 좋은 구간을 기다리세요.",
         work: "자신의 분석력을 믿고 원칙대로 진행할 때 성과가 따릅니다.",
         love: "주변의 다양한 정보 중 가치 있는 것을 가려내는 지혜가 필요합니다.",
-        health: "명확한 판단을 위해 충분한 휴식과 안정을 취하세요.",
+        health: "명확한 판단을 위해 충분한 휴식과 안정에 취하세요.",
         advice: score >= 70
           ? "강세 관점이 유리하지만, 추격 매수보다는 눌림목을 활용하세요."
           : score < 45
